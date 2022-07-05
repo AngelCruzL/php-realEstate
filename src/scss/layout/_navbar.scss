@@ -1,0 +1,31 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+.navbar {
+  display: flex;
+  flex-direction: column;
+  padding-block-start: 3rem;
+
+  @include m.respond(tablet) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.mainNavigation {
+  ul {
+    display: block;
+    text-align: center;
+
+    @include m.respond(tablet) {
+      display: flex;
+      gap: 2rem;
+    }
+
+    a {
+      font-size: 1.8rem;
+      color: v.$colorWhite;
+    }
+  }
+}

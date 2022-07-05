@@ -1,0 +1,7 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+.header {
+  background-color: v.$colorGreyDarker;
+  padding-block: 1rem 3rem;
+}
