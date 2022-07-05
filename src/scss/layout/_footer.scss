@@ -1,0 +1,15 @@
+@use '../abstracts/variables' as v;
+
+.footer {
+  padding-block: v.$gap / 2;
+  background-color: v.$colorGreyDarker;
+
+  .footerContainer {
+    padding-block-start: v.$gap / 2;
+  }
+
+  .copyright {
+    color: v.$colorWhite;
+    text-align: center;
+  }
+}
