@@ -1,0 +1,19 @@
+@use '../abstracts/mixins' as m;
+
+@include m.respond(tablet) {
+  .aboutUs-icons {
+    @include m.grid(3, 2rem);
+  }
+}
+
+.icon {
+  text-align: center;
+
+  img {
+    block-size: 10rem;
+  }
+
+  h3 {
+    text-transform: uppercase;
+  }
+}
