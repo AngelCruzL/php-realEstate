@@ -4,6 +4,10 @@
   padding-block: v.$gap / 2;
   background-color: v.$colorGreyDarker;
 
+  &.section {
+    margin-block-end: unset;
+  }
+
   .footerContainer {
     padding-block-start: v.$gap / 2;
   }
