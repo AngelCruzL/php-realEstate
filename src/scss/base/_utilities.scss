@@ -1,0 +1,13 @@
+@use '../abstracts/variables' as v;
+
+.container {
+  inline-size: min(95%, 120rem);
+  margin-inline: auto;
+}
+.section {
+  margin-block-start: calc(v.$gap / 2);
+  margin-block-end: calc(v.$gap / 2);
+}
+.center-content {
+  max-inline-size: 800px;
+}
