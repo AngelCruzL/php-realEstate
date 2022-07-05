@@ -1,7 +1,43 @@
 @use '../abstracts/variables' as v;
 @use '../abstracts/mixins' as m;
 
+.no-webp .mainHeader {
+  background-image: url('../img/header.jpg');
+}
+.webp .mainHeader {
+  background-image: url('../img/header.webp');
+}
+
 .header {
   background-color: v.$colorGreyDarker;
   padding-block: 1rem 3rem;
+
+  &.mainHeader {
+    background-position: center;
+    background-size: cover;
+
+    @include m.respond(tablet) {
+      min-block-size: 70rem;
+    }
+
+    .headerContent {
+      @include m.respond(tablet) {
+        min-block-size: 70rem;
+      }
+    }
+  }
+}
+
+.headerContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  > h1 {
+    text-align: left;
+    color: v.$colorWhite;
+    font-weight: v.$fontWeightBold;
+    line-height: 2;
+    max-inline-size: 30ch;
+  }
 }
