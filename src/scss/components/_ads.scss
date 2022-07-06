@@ -22,16 +22,17 @@
   p {
     margin-block: 0;
   }
+}
 
-  .price {
-    font-size: 2.4rem;
-    font-weight: v.$fontWeightBold;
-    color: v.$colorGreen;
-  }
+.price {
+  font-size: 2.4rem;
+  font-weight: v.$fontWeightBold;
+  color: v.$colorGreen;
 }
 
 .featureIcons {
   display: flex;
+  max-inline-size: 35rem;
 
   li {
     flex: 1;
