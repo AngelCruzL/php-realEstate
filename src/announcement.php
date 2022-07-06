@@ -50,20 +50,6 @@ include '../includes/templates/header.php'
   </div>
 </main>
 
-<footer class="footer section">
-  <div class="container footerContainer">
-    <nav class="mainNavigation">
-      <ul>
-        <li><a href="about.php">Nosotros</a></li>
-        <li><a href="announcements.php">Anuncios</a></li>
-        <li><a href="blog.php">Blog</a></li>
-        <li><a href="contact.php">Contacto</a></li>
-      </ul>
-    </nav>
-  </div>
-
-  <p class="copyright">Todos los derechos reservados 2022 &copy;</p>
-</footer>
-</body>
-
-</html>
+<?php
+include '../includes/templates/footer.php'
+?>
