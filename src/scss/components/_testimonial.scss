@@ -1,0 +1,37 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+.testimonial {
+  padding-block: 2rem;
+  padding-inline: 2rem;
+  background-color: v.$colorGreen;
+  border-radius: 2rem;
+  font-size: 2.4rem;
+  color: v.$colorWhite;
+
+  blockquote {
+    position: relative;
+    padding-inline-start: 5rem;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -2rem;
+      display: block;
+      block-size: 8rem;
+      inline-size: 6rem;
+      background-image: url('../img/comilla.svg');
+      background-repeat: no-repeat;
+    }
+  }
+
+  .author {
+    text-align: right;
+    color: v.$colorWhite;
+
+    &::before {
+      content: '- ';
+    }
+  }
+}
