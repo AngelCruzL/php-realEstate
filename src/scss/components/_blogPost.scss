@@ -9,6 +9,12 @@
   }
 }
 
+.metadata {
+  span {
+    color: v.$colorYellow;
+  }
+}
+
 .postText {
   a {
     display: block;
@@ -32,9 +38,5 @@
       inline-size: 15rem;
       background-color: v.$colorGreen;
     }
-  }
-
-  span {
-    color: v.$colorYellow;
   }
 }
