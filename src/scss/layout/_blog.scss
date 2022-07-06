@@ -1,0 +1,16 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+@include m.respond(tablet) {
+  .sectionBlog {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+  }
+}
+
+.blogPost {
+  &:not(:last-child) {
+    margin-block-end: v.$gap;
+  }
+}

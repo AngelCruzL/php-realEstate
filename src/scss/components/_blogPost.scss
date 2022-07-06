@@ -1,0 +1,40 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+@include m.respond(tablet) {
+  .blogPost {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    column-gap: 2rem;
+  }
+}
+
+.postText {
+  a {
+    display: block;
+    margin-block-start: calc(v.$gap / 2);
+    color: v.$colorBlack;
+
+    @include m.respond(tablet) {
+      margin-block-start: unset;
+    }
+  }
+
+  h4 {
+    margin-block: unset;
+    line-height: 1.4;
+
+    &::after {
+      content: '';
+      display: block;
+      margin-block-start: 1rem;
+      block-size: 0.5rem;
+      inline-size: 15rem;
+      background-color: v.$colorGreen;
+    }
+  }
+
+  span {
+    color: v.$colorYellow;
+  }
+}
