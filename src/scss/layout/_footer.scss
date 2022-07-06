@@ -1,7 +1,7 @@
 @use '../abstracts/variables' as v;
 
 .footer {
-  padding-block: v.$gap / 2;
+  padding-block: calc(v.$gap / 2);
   background-color: v.$colorGreyDarker;
 
   &.section {
@@ -9,7 +9,7 @@
   }
 
   .footerContainer {
-    padding-block-start: v.$gap / 2;
+    padding-block-start: calc(v.$gap / 2);
   }
 
   .copyright {

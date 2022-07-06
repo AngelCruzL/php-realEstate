@@ -8,6 +8,10 @@
   margin-block-start: calc(v.$gap / 2);
   margin-block-end: calc(v.$gap / 2);
 }
-.center-content {
+.centerContent {
   max-inline-size: 800px;
+}
+.alignEnd {
+  display: flex;
+  justify-content: flex-end;
 }

@@ -1,0 +1,50 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+@include m.respond(tablet) {
+  .adsContainer {
+    @include m.grid(3, 2rem);
+  }
+}
+
+.ad {
+  background-color: lighten(v.$colorGrey, 5);
+  border: 1px solid darken(v.$colorGrey, 10);
+
+  .content {
+    padding-block: 2rem;
+    padding-inline: 2rem;
+  }
+
+  h3,
+  p {
+    margin-block: 0;
+  }
+
+  .price {
+    font-size: 2.4rem;
+    font-weight: v.$fontWeightBold;
+    color: v.$colorGreen;
+  }
+}
+
+.featureIcons {
+  display: flex;
+
+  li {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-block: 1rem;
+
+    img {
+      flex: 0 0 3rem;
+      margin-inline-end: 1rem;
+    }
+
+    p {
+      font-weight: v.$fontWeightBlack;
+    }
+  }
+}
