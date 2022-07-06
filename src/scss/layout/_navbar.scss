@@ -4,12 +4,34 @@
 .navbar {
   display: flex;
   flex-direction: column;
+  align-items: center;
   padding-block-start: 3rem;
 
   @include m.respond(tablet) {
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
+  }
+}
+
+.mobileMenu {
+  @include m.respond(tablet) {
+    display: none;
+  }
+
+  img {
+    margin-block-start: 1.2rem;
+    inline-size: 5rem;
+  }
+}
+
+.header .mainNavigation {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.3s ease-in-out, opacity 0.3s linear;
+
+  @include m.respond(tablet) {
+    visibility: visible;
+    opacity: 1;
   }
 }
 
@@ -28,4 +50,9 @@
       color: v.$colorWhite;
     }
   }
+}
+
+.active + .mainNavigation {
+  visibility: visible;
+  opacity: 1;
 }
