@@ -2,7 +2,11 @@
 @use '../abstracts/mixins' as m;
 
 .btnYellow {
-  @include m.button(v.$colorYellow, block);
+  @include m.button(v.$colorYellow, inline-block);
+
+  &-block {
+    @include m.button(v.$colorYellow, block);
+  }
 }
 .btnGreen {
   @include m.button(v.$colorGreen, inline-block);

@@ -1,0 +1,27 @@
+@use '../abstracts/variables' as v;
+
+.no-webp .contactImage {
+  background-image: url(../img/encuentra.jpg);
+}
+.webp .contactImage {
+  background-image: url(../img/encuentra.webp);
+}
+.contactImage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-block: calc(v.$gap * 2);
+  background-position: center;
+  background-size: cover;
+
+  h2 {
+    font-size: 4rem;
+    font-weight: v.$fontWeightBlack;
+    color: v.$colorWhite;
+  }
+
+  p {
+    font-size: 1.8rem;
+    color: v.$colorWhite;
+  }
+}
