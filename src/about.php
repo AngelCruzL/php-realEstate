@@ -1,146 +1,97 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bienes Raíces</title>
-    <link rel="stylesheet" href="../build/css/app.css" />
-    <script src="../build/js/bundle.min.js" defer></script>
-  </head>
-  <body>
-    <header class="header">
-      <div class="container headerContent">
-        <div class="navbar">
-          <a href="index.html">
-            <img src="../build/img/logo.svg" alt="Bienes Raíces logo" />
-          </a>
+<?php
+include '../includes/templates/header.php'
+?>
 
-          <div class="mobileMenu">
-            <img src="../build/img/barras.svg" alt="Icono de menu responsivo" />
-          </div>
+<main class="container section">
+  <h1>Conoce sobre nosotros</h1>
+  <div class="aboutContent">
+    <div class="image">
+      <picture>
+        <source srcset="../build/img/nosotros.webp" type="img/webp" />
+        <source srcset="../build/img/nosotros.jpg" type="img/jpeg" />
+        <img loading="lazy" src="../build/img/nosotros.jpg" alt="Sobre nosotros" />
+      </picture>
+    </div>
 
-          <div class="navigationContainer">
-            <img src="../build/img/dark-mode.svg" alt="" class="darkMode-btn" />
+    <div class="aboutText">
+      <blockquote>25 años de experiencia</blockquote>
 
-            <nav class="mainNavigation">
-              <ul>
-                <li><a href="about.html">Nosotros</a></li>
-                <li><a href="announcements.html">Anuncios</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="contact.html">Contacto</a></li>
-              </ul>
-            </nav>
-          </div>
-        </div>
-      </div>
-    </header>
+      <p>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusamus,
+        dolore? Corrupti esse minus eligendi cupiditate illo a, harum sequi
+        quam voluptatem sunt rerum sapiente doloribus qui delectus
+        consequuntur quod ad? Lorem ipsum, dolor sit amet consectetur
+        adipisicing elit. Ea nam corporis quae asperiores? Deserunt
+        dignissimos accusamus mollitia. Fugiat, voluptatem. Temporibus
+        impedit earum beatae mollitia, facere corrupti saepe alias nobis
+        reiciendis!
+      </p>
 
-    <main class="container section">
-      <h1>Conoce sobre nosotros</h1>
-      <div class="aboutContent">
-        <div class="image">
-          <picture>
-            <source srcset="../build/img/nosotros.webp" type="img/webp" />
-            <source srcset="../build/img/nosotros.jpg" type="img/jpeg" />
-            <img
-              loading="lazy"
-              src="../build/img/nosotros.jpg"
-              alt="Sobre nosotros"
-            />
-          </picture>
-        </div>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti,
+        alias a! Harum molestias aut consequatur quisquam laboriosam sunt
+        tempora architecto quaerat provident asperiores quos et beatae,
+        nostrum ipsa officiis animi!
+      </p>
+    </div>
+  </div>
+</main>
 
-        <div class="aboutText">
-          <blockquote>25 años de experiencia</blockquote>
+<section class="container section">
+  <h2>Más sobre Nosotros</h2>
 
-          <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusamus,
-            dolore? Corrupti esse minus eligendi cupiditate illo a, harum sequi
-            quam voluptatem sunt rerum sapiente doloribus qui delectus
-            consequuntur quod ad? Lorem ipsum, dolor sit amet consectetur
-            adipisicing elit. Ea nam corporis quae asperiores? Deserunt
-            dignissimos accusamus mollitia. Fugiat, voluptatem. Temporibus
-            impedit earum beatae mollitia, facere corrupti saepe alias nobis
-            reiciendis!
-          </p>
+  <div class="aboutUs-icons">
+    <div class="icon">
+      <img src="../build/img/icono1.svg" alt="Icono seguridad" loading="lazy" />
 
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti,
-            alias a! Harum molestias aut consequatur quisquam laboriosam sunt
-            tempora architecto quaerat provident asperiores quos et beatae,
-            nostrum ipsa officiis animi!
-          </p>
-        </div>
-      </div>
-    </main>
+      <h3>Seguridad</h3>
 
-    <section class="container section">
-      <h2>Más sobre Nosotros</h2>
+      <p>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Est
+        architecto sit officia culpa sunt alias magni, esse, fugit
+        voluptates, modi laudantium velit.
+      </p>
+    </div>
 
-      <div class="aboutUs-icons">
-        <div class="icon">
-          <img
-            src="../build/img/icono1.svg"
-            alt="Icono seguridad"
-            loading="lazy"
-          />
+    <div class="icon">
+      <img src="../build/img/icono2.svg" alt="Icono precio" loading="lazy" />
 
-          <h3>Seguridad</h3>
+      <h3>Precio</h3>
 
-          <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Est
-            architecto sit officia culpa sunt alias magni, esse, fugit
-            voluptates, modi laudantium velit.
-          </p>
-        </div>
+      <p>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Est
+        architecto sit officia culpa sunt alias magni, esse, fugit
+        voluptates, modi laudantium velit.
+      </p>
+    </div>
+    <div class="icon">
+      <img src="../build/img/icono3.svg" alt="Icono tiempo" loading="lazy" />
 
-        <div class="icon">
-          <img
-            src="../build/img/icono2.svg"
-            alt="Icono precio"
-            loading="lazy"
-          />
+      <h3>A tiempo</h3>
 
-          <h3>Precio</h3>
+      <p>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Est
+        architecto sit officia culpa sunt alias magni, esse, fugit
+        voluptates, modi laudantium velit.
+      </p>
+    </div>
+  </div>
+</section>
 
-          <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Est
-            architecto sit officia culpa sunt alias magni, esse, fugit
-            voluptates, modi laudantium velit.
-          </p>
-        </div>
-        <div class="icon">
-          <img
-            src="../build/img/icono3.svg"
-            alt="Icono tiempo"
-            loading="lazy"
-          />
+<footer class="footer section">
+  <div class="container footerContainer">
+    <nav class="mainNavigation">
+      <ul>
+        <li><a href="about.php">Nosotros</a></li>
+        <li><a href="announcements.php">Anuncios</a></li>
+        <li><a href="blog.php">Blog</a></li>
+        <li><a href="contact.php">Contacto</a></li>
+      </ul>
+    </nav>
+  </div>
 
-          <h3>A tiempo</h3>
+  <p class="copyright">Todos los derechos reservados 2022 &copy;</p>
+</footer>
+</body>
 
-          <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Est
-            architecto sit officia culpa sunt alias magni, esse, fugit
-            voluptates, modi laudantium velit.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <footer class="footer section">
-      <div class="container footerContainer">
-        <nav class="mainNavigation">
-          <ul>
-            <li><a href="about.html">Nosotros</a></li>
-            <li><a href="announcements.html">Anuncios</a></li>
-            <li><a href="blog.html">Blog</a></li>
-            <li><a href="contact.html">Contacto</a></li>
-          </ul>
-        </nav>
-      </div>
-
-      <p class="copyright">Todos los derechos reservados 2022 &copy;</p>
-    </footer>
-  </body>
 </html>
