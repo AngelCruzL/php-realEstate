@@ -1,0 +1,49 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+body.darkMode {
+  background-color: darken(v.$colorGreyDarker, 7);
+
+  p {
+    color: darken(v.$colorWhite, 30);
+  }
+
+  a,
+  h1,
+  h2,
+  h3,
+  h4 {
+    color: v.$colorGrey;
+  }
+
+  .ad {
+    background-color: v.$colorGreyDarker;
+    border: 1px solid v.$colorGreyDarker;
+  }
+  .price {
+    color: v.$colorGreen;
+  }
+  .featureIcons img {
+    filter: invert(100%);
+  }
+
+  .aboutText > blockquote {
+    color: darken(v.$colorWhite, 10);
+  }
+
+  .contactForm {
+    label,
+    legend,
+    p {
+      color: v.$colorGrey;
+    }
+  }
+
+  input:not([type='submit']),
+  textarea,
+  select {
+    background-color: v.$colorGreyDarker;
+    border: 1px solid v.$colorGreyDarker;
+    color: darken(v.$colorWhite, 30);
+  }
+}
