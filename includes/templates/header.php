@@ -11,9 +11,9 @@
 </head>
 
 <body>
-  <header class="header <?php echo isset($home) ? 'mainHeader' : '' ?>">
+  <header class="header <?php echo isset($isIndex) ? 'mainHeader' : '' ?>">
     <div class="container headerContent">
-      <div class="navbar">
+      <div class="navbar <?php echo isset($isIndex) ? 'home' : '' ?>">
         <a href="index.php">
           <img src="../build/img/logo.svg" alt="Bienes Raíces logo" />
         </a>
@@ -25,7 +25,7 @@
         <div class="navigationContainer">
           <img src="../build/img/dark-mode.svg" alt="" class="darkMode-btn" />
 
-          <nav class="mainNavigation <?php echo isset($home) ? 'home' : '' ?>">
+          <nav class="mainNavigation <?php echo isset($isIndex) ? 'home' : '' ?>">
             <ul>
               <li><a href="about.php">Nosotros</a></li>
               <li><a href="announcements.php">Anuncios</a></li>
@@ -37,7 +37,7 @@
       </div>
 
       <?php
-      echo isset($home)
+      echo isset($isIndex)
         ? '<h1>Venta de Casas y Departamentos Exclusivos de Lujo</h1>'
         : ''
       ?>
