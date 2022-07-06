@@ -1,0 +1,9 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+.btnYellow {
+  @include m.button(v.$colorYellow, block);
+}
+.btnGreen {
+  @include m.button(v.$colorGreen, inline-block);
+}
