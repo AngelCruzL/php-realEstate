@@ -5,7 +5,7 @@
   margin-inline: auto;
 }
 .section {
-  margin-block-start: calc(v.$gap / 2);
+  margin-block-start: v.$gap;
   margin-block-end: calc(v.$gap / 2);
 }
 .centerContent {

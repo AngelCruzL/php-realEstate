@@ -1,8 +1,10 @@
 @use '../abstracts/variables' as v;
 @use '../abstracts/mixins' as m;
 
-@include m.respond(tablet) {
-  .adsContainer {
+.adsContainer {
+  @include m.grid(1, 2rem);
+
+  @include m.respond(tablet) {
     @include m.grid(3, 2rem);
   }
 }
