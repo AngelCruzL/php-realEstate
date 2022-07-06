@@ -1,0 +1,51 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+.contactForm {
+  p {
+    margin-block-start: 2rem;
+    font-size: 1.4rem;
+    color: v.$colorGreyDarker;
+  }
+
+  legend {
+    font-size: 2rem;
+    color: v.$colorGreyDarker;
+  }
+
+  label {
+    display: block;
+    font-weight: v.$fontWeightBold;
+    text-transform: uppercase;
+  }
+
+  textarea {
+    block-size: 20rem;
+  }
+
+  input:not([type='submit']),
+  textarea,
+  select {
+    display: block;
+    margin-block-end: 2rem;
+    padding-block: 1rem;
+    padding-inline: 1rem;
+    inline-size: 100%;
+    background-color: v.$colorWhite;
+    border: 1px solid v.$colorGrey;
+    border-radius: 1rem;
+  }
+
+  .contactMean {
+    display: flex;
+    max-inline-size: 40rem;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  input[type='radio'] {
+    margin-block: unset;
+    margin-inline: unset;
+    inline-size: auto;
+  }
+}

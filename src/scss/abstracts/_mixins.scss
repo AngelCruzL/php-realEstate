@@ -30,11 +30,13 @@
   padding-block: 1.2rem;
   padding-inline: 2.4rem;
   background-color: $backgroundColor;
+  border: none;
   color: var.$colorWhite;
   font-weight: var.$fontWeightBold;
   text-align: center;
 
   &:hover {
+    cursor: pointer;
     background-color: darken($backgroundColor, 5);
   }
 }
