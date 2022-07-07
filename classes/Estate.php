@@ -17,6 +17,7 @@ class Estate
     'created_at',
     'seller_id'
   ];
+  protected static $errors = [];
 
   public $id;
   public $title;
@@ -50,31 +51,13 @@ class Estate
 
   public function saveDB()
   {
-    $data = $this->sanitizeData();
+    $sanitizedData = $this->sanitizeData();
 
-    debug($data);
-
-    $createQuery = "INSERT INTO estates(
-      title,
-      price,
-      image,
-      description,
-      bedrooms,
-      bathrooms,
-      park,
-      created_at,
-      seller_id
-    ) VALUES (
-      '$this->title',
-      '$this->price',
-      '$this->imageName',
-      '$this->description',
-      '$this->bedrooms',
-      '$this->bathrooms',
-      '$this->park',
-      '$this->created_at',
-      '$this->seller_id'
-    );";
+    $createQuery = "INSERT INTO estates( " .
+      join(', ', array_keys($sanitizedData)) .
+      " ) VALUES ( '" .
+      join("', '", array_values($sanitizedData)) .
+      "' );";
 
     $result =  self::$db->query($createQuery);
 
@@ -103,5 +86,23 @@ class Estate
     }
 
     return $sanitizedData;
+  }
+
+  public static function getErrors()
+  {
+    return self::$errors;
+  }
+
+  public function validateData()
+  {
+    if (empty($this->title)) self::$errors[] = 'El título es obligatorio';
+    if (empty($this->price)) self::$errors[] = 'El precio es obligatorio';
+    if (strlen($this->description) < 50) self::$errors[] = 'La descripción debe tener al menos 50 caracteres';
+    if (empty($this->bedrooms)) self::$errors[] = 'El número de habitaciones es obligatorio';
+    if (empty($this->bathrooms)) self::$errors[] = 'El número de baños es obligatorio';
+    if (empty($this->park)) self::$errors[] = 'El número de lugares de estacionamiento es obligatorio';
+    if (empty($this->seller_id)) self::$errors[] = 'El vendedor es obligatorio';
+
+    return self::$errors;
   }
 }

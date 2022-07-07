@@ -10,7 +10,7 @@ $db = dbConnection();
 $getSellersQuery = "SELECT * FROM sellers";
 $sellers = mysqli_query($db, $getSellersQuery);
 
-$errors = [];
+$errors = Estate::getErrors();
 
 $title = '';
 $price = '';
@@ -25,29 +25,16 @@ $maxImageSize = 1000 * 1000; // (1mb)
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $estate = new Estate($_POST);
 
-  $estate->saveDB();
+  $errors = $estate->validateData();
 
-  $title = mysqli_real_escape_string($db, $_POST['title']);
-  $price = mysqli_real_escape_string($db, $_POST['price']);
-  $description = mysqli_real_escape_string($db, $_POST['description']);
-  $bedrooms = mysqli_real_escape_string($db, $_POST['bedrooms']);
-  $bathrooms = mysqli_real_escape_string($db, $_POST['bathrooms']);
-  $park = mysqli_real_escape_string($db, $_POST['park']);
-  $seller_id = mysqli_real_escape_string($db, $_POST['seller_id']);
-
-  $image = $_FILES['image'];
-
-  if (empty($title)) $errors[] = 'El título es obligatorio';
-  if (empty($price)) $errors[] = 'El precio es obligatorio';
-  if (empty($image['name']) || $image['error']) $errors[] = 'La imagen es obligatoria';
-  if (strlen($description) < 50) $errors[] = 'La descripción debe tener al menos 50 caracteres';
-  if (empty($bedrooms)) $errors[] = 'El número de habitaciones es obligatorio';
-  if (empty($bathrooms)) $errors[] = 'El número de baños es obligatorio';
-  if (empty($park)) $errors[] = 'El número de lugares de estacionamiento es obligatorio';
-  if (empty($seller_id)) $errors[] = 'El vendedor es obligatorio';
-  if ($image['size'] > $maxImageSize) $errors[] = 'La imagen es demasiado grande';
+  // if (empty($this->image['name']) || $this->image['error']) self::$errors[] = 'La imagen es obligatoria';
+  // if ($this->image['size'] > $maxImageSize) self::$errors[] = 'La imagen es demasiado grande';
 
   if (empty($errors)) {
+    $estate->saveDB();
+
+    $image = $_FILES['image'];
+
     $imagesDirectory = '../../images/';
 
     if (!is_dir($imagesDirectory)) mkdir($imagesDirectory);
