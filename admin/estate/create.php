@@ -13,21 +13,17 @@ $description = '';
 $bedrooms = '';
 $bathrooms = '';
 $park = '';
-$created_at = date('Y/m/d');
 $seller = '';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-  // echo "<pre>";
-  // var_dump($_POST);
-  // echo "</pre>";
-
-  $title = $_POST['title'];
-  $price = $_POST['price'];
-  $description = $_POST['description'];
-  $bedrooms = $_POST['bedrooms'];
-  $bathrooms = $_POST['bathrooms'];
-  $park = $_POST['park'];
-  $seller_id = $_POST['seller_id'];
+  $title = mysqli_real_escape_string($db, $_POST['title']);
+  $price = mysqli_real_escape_string($db, $_POST['price']);
+  $description = mysqli_real_escape_string($db, $_POST['description']);
+  $bedrooms = mysqli_real_escape_string($db, $_POST['bedrooms']);
+  $bathrooms = mysqli_real_escape_string($db, $_POST['bathrooms']);
+  $park = mysqli_real_escape_string($db, $_POST['park']);
+  $seller_id = mysqli_real_escape_string($db, $_POST['seller_id']);
+  $created_at = date('Y/m/d');
 
   if (empty($title)) $errors[] = 'El título es obligatorio';
   if (empty($price)) $errors[] = 'El precio es obligatorio';
