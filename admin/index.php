@@ -1,4 +1,10 @@
 <?php
+session_start();
+
+$isAuth = $_SESSION['logged'];
+if (!$isAuth) header('Location: /bienes-raices/src/login.php');
+
+
 require '../includes/config/database.php';
 $db = dbConnection();
 
