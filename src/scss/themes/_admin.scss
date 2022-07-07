@@ -1,0 +1,22 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+table.estates {
+  margin-block-start: 4rem;
+  inline-size: 100%;
+  border-spacing: 0;
+
+  thead {
+    background-color: v.$colorGreen;
+
+    th {
+      padding-block: 2rem;
+      padding-inline: 2rem;
+      color: v.$colorWhite;
+    }
+  }
+
+  .tableImage {
+    inline-size: 10rem;
+  }
+}

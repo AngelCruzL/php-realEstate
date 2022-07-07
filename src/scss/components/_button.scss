@@ -10,4 +10,15 @@
 }
 .btnGreen {
   @include m.button(v.$colorGreen, inline-block);
+
+  &-block {
+    @include m.button(v.$colorGreen, block);
+  }
+}
+.btnRed {
+  @include m.button(v.$colorError, inline-block);
+
+  &-block {
+    @include m.button(v.$colorError, block);
+  }
 }
