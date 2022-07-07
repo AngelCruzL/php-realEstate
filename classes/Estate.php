@@ -35,7 +35,7 @@ class Estate
     $this->id = $args['id'] ?? '';
     $this->title = $args['title'] ?? '';
     $this->price = $args['price'] ?? '';
-    $this->image = $args['image'] ?? 'image.jpg';
+    // $this->image = $args['image'] ?? '';
     $this->description = $args['description'] ?? '';
     $this->bedrooms = $args['bedrooms'] ?? '';
     $this->bathrooms = $args['bathrooms'] ?? '';
@@ -61,7 +61,7 @@ class Estate
 
     $result =  self::$db->query($createQuery);
 
-    debug($result);
+    return $result;
   }
 
   public function mapData()
@@ -74,6 +74,11 @@ class Estate
     }
 
     return $data;
+  }
+
+  public function setImage($image)
+  {
+    if ($image) $this->image = $image;
   }
 
   public function sanitizeData()
@@ -97,6 +102,7 @@ class Estate
   {
     if (empty($this->title)) self::$errors[] = 'El título es obligatorio';
     if (empty($this->price)) self::$errors[] = 'El precio es obligatorio';
+    if (empty($this->image)) self::$errors[] = 'La imagen es obligatoria';
     if (strlen($this->description) < 50) self::$errors[] = 'La descripción debe tener al menos 50 caracteres';
     if (empty($this->bedrooms)) self::$errors[] = 'El número de habitaciones es obligatorio';
     if (empty($this->bathrooms)) self::$errors[] = 'El número de baños es obligatorio';

@@ -1,6 +1,8 @@
 <?php
 require '../includes/app.php';
 
+isAuthenticated();
+
 $db = dbConnection();
 
 $getEstatesQuery = "SELECT * FROM estates";

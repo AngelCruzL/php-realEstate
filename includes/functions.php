@@ -1,7 +1,8 @@
 <?php
 
 define('TEMPLATES_URL', __DIR__ . './templates');
-define('FUNCTIONS_URL', __DIR__ . './functions.php');
+define('FUNCTIONS_URL', __DIR__ . 'functions.php');
+define('IMAGES_DIRECTORY', __DIR__ . '/../images/');
 
 function includeTemplate(string $name, bool $isIndex = false): void
 {
