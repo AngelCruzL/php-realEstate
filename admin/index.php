@@ -1,9 +1,7 @@
 <?php
-session_start();
-
-$isAuth = $_SESSION['logged'];
+require '../includes/functions.php';
+$isAuth = isAuthenticated();
 if (!$isAuth) header('Location: /bienes-raices/src/login.php');
-
 
 require '../includes/config/database.php';
 $db = dbConnection();
@@ -30,7 +28,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   }
 }
 
-require '../includes/functions.php';
 includeTemplate('header');
 ?>
 
