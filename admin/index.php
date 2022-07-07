@@ -1,9 +1,6 @@
 <?php
-require '../includes/functions.php';
-$isAuth = isAuthenticated();
-if (!$isAuth) header('Location: /bienes-raices/login.php');
+require '../includes/app.php';
 
-require '../includes/config/database.php';
 $db = dbConnection();
 
 $getEstatesQuery = "SELECT * FROM estates";

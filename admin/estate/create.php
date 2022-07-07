@@ -1,9 +1,10 @@
 <?php
-require '../../includes/functions.php';
-$isAuth = isAuthenticated();
-if (!$isAuth) header('Location: /bienes-raices/login.php');
+require '../../includes/app.php';
 
-require '../../includes/config/database.php';
+use App\Estate;
+
+isAuthenticated();
+
 $db = dbConnection();
 
 $getSellersQuery = "SELECT * FROM sellers";

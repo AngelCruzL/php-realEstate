@@ -8,8 +8,17 @@ function includeTemplate(string $name, bool $isIndex = false): void
   include TEMPLATES_URL . "/${name}.php";
 }
 
-function isAuthenticated(): bool
+function isAuthenticated()
 {
   session_start();
-  return isset($_SESSION['logged']);
+  if (!$_SESSION['logged']) header('Location: /bienes-raices');
+}
+
+function debug($variableToDebug)
+{
+  echo "<pre>";
+  var_dump($variableToDebug);
+  echo "</pre>";
+
+  exit;
 }
