@@ -11,3 +11,5 @@ package-lock.json
 yarn.lock
 *.log
 user.php
+
+/vendor/
