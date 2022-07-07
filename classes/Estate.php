@@ -5,6 +5,18 @@ namespace App;
 class Estate
 {
   protected static $db;
+  protected static $dbColumns = [
+    'id',
+    'title',
+    'price',
+    'image',
+    'description',
+    'bedrooms',
+    'bathrooms',
+    'park',
+    'created_at',
+    'seller_id'
+  ];
 
   public $id;
   public $title;
@@ -31,8 +43,17 @@ class Estate
     $this->seller_id = $args['seller_id'] ?? '';
   }
 
+  public static function setDB($database)
+  {
+    self::$db = $database;
+  }
+
   public function saveDB()
   {
+    $data = $this->sanitizeData();
+
+    debug($data);
+
     $createQuery = "INSERT INTO estates(
       title,
       price,
@@ -60,8 +81,27 @@ class Estate
     debug($result);
   }
 
-  public static function setDB($database)
+  public function mapData()
   {
-    self::$db = $database;
+    $data = [];
+
+    foreach (self::$dbColumns as $column) {
+      if ($column === 'id') continue;
+      $data[$column] = $this->$column;
+    }
+
+    return $data;
+  }
+
+  public function sanitizeData()
+  {
+    $data = $this->mapData();
+    $sanitizedData = [];
+
+    foreach ($data as $key => $value) {
+      $sanitizedData[$key] = self::$db->escape_string($value);
+    }
+
+    return $sanitizedData;
   }
 }
