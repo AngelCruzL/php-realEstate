@@ -35,3 +35,17 @@ INSERT INTO sellers(
   'Lara',
   '1234567890'
 );
+
+CREATE TABLE users(
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  email VARCHAR(50) UNIQUE NOT NULL,
+  password CHAR(60) NOT NULL
+);
+
+INSERT INTO users(
+  email,
+  password
+) VALUES(
+  'test@test.com',
+  '$2y$10$DbWpsqrLGFWoD5zyV2AqQurb66ktagn6mNYMdwUbBviiz3lu60O6S'
+)
