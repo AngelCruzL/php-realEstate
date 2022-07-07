@@ -71,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $result = mysqli_query($db, $createQuery);
 
-    if ($result) header('Location: /bienes-raices/admin');
+    if ($result) header('Location: /bienes-raices/admin?created=1');
   }
 }
 

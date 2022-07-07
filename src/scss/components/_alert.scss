@@ -12,6 +12,10 @@
     background-color: v.$colorError;
   }
 
+  &Success {
+    background-color: v.$colorSuccess;
+  }
+
   p {
     margin-block: 0;
     color: v.$colorWhite;
