@@ -46,4 +46,10 @@ body.darkMode {
   a[class^='btn'] {
     color: v.$colorWhite;
   }
+
+  .alert {
+    p {
+      color: v.$colorWhite;
+    }
+  }
 }
