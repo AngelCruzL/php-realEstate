@@ -1,19 +1,28 @@
 <?php
+$id = $_GET['id'];
+$id = filter_var($id, FILTER_VALIDATE_INT);
+
+if (!$id) header('Location: /bienes-raices/admin');
+
 require '../../includes/config/database.php';
 $db = dbConnection();
+
+$getEstateQuery = "SELECT * FROM estates WHERE id = ${id}";
+$estate = mysqli_query($db, $getEstateQuery);
+$estate = mysqli_fetch_assoc($estate);
 
 $getSellersQuery = "SELECT * FROM sellers";
 $sellers = mysqli_query($db, $getSellersQuery);
 
 $errors = [];
 
-$title = '';
-$price = '';
-$description = '';
-$bedrooms = '';
-$bathrooms = '';
-$park = '';
-$seller_id = '';
+$title = $estate['title'] ?? null;
+$price = $estate['price'] ?? null;
+$description = $estate['description'] ?? null;
+$bedrooms = $estate['bedrooms'] ?? null;
+$bathrooms = $estate['bathrooms'] ?? null;
+$park = $estate['park'] ?? null;
+$seller_id = $estate['seller_id'] ?? null;
 
 $maxImageSize = 1000 * 1000; // (1mb)
 
@@ -31,7 +40,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   if (empty($title)) $errors[] = 'El título es obligatorio';
   if (empty($price)) $errors[] = 'El precio es obligatorio';
-  if (empty($image['name']) || $image['error']) $errors[] = 'La imagen es obligatoria';
   if (strlen($description) < 50) $errors[] = 'La descripción debe tener al menos 50 caracteres';
   if (empty($bedrooms)) $errors[] = 'El número de habitaciones es obligatorio';
   if (empty($bathrooms)) $errors[] = 'El número de baños es obligatorio';
@@ -40,38 +48,35 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   if ($image['size'] > $maxImageSize) $errors[] = 'La imagen es demasiado grande';
 
   if (empty($errors)) {
+    $imageName = '';
     $imagesDirectory = '../../images/';
 
     if (!is_dir($imagesDirectory)) mkdir($imagesDirectory);
 
-    $imageName = md5(uniqid(rand(), true)) . '.jpg';
-    move_uploaded_file($image['tmp_name'], $imagesDirectory .  $imageName);
+    if ($image['name']) {
+      // ? Delete previous image if it exists
+      unlink($imagesDirectory . $estate['image']);
 
-    $createQuery = "INSERT INTO estates(
-      title,
-      price,
-      image,
-      description,
-      bedrooms,
-      bathrooms,
-      park,
-      created_at,
-      seller_id
-    ) VALUES (
-      '$title',
-      '$price',
-      '$imageName',
-      '$description',
-      '$bedrooms',
-      '$bathrooms',
-      '$park',
-      '$created_at',
-      '$seller_id'
-    );";
+      $imageName = md5(uniqid(rand(), true)) . '.jpg';
+      move_uploaded_file($image['tmp_name'], $imagesDirectory .  $imageName);
+    } else {
+      $imageName = $estate['image'];
+    }
 
-    $result = mysqli_query($db, $createQuery);
+    $updateQuery = "UPDATE estates
+    SET title = '${title}',
+      price = '${price}',
+      image = '${imageName}',
+      description = '${description}',
+      bedrooms = ${bedrooms},
+      bathrooms = ${bathrooms},
+      park = ${park},
+      seller_id = ${seller_id}
+    WHERE id = ${id}";
 
-    if ($result) header('Location: /bienes-raices/admin?status=1');
+    $result = mysqli_query($db, $updateQuery);
+
+    if ($result) header('Location: /bienes-raices/admin?status=2');
   }
 }
 
@@ -80,17 +85,11 @@ includeTemplate('header');
 ?>
 
 <main class="container section">
-  <h1>Crear</h1>
+  <h1>Actualizar</h1>
 
   <a href="/bienes-raices/admin" class="btnGreen">Volver</a>
 
-  <?php foreach ($errors as $error) : ?>
-    <div class="alert alertError">
-      <p><?php echo $error; ?></p>
-    </div>
-  <?php endforeach; ?>
-
-  <form class="form" action="/bienes-raices/admin/estate/create.php" method="POST" enctype="multipart/form-data">
+  <form class="form" method="POST" enctype="multipart/form-data">
     <fieldset>
       <legend>Información general</legend>
 
@@ -102,6 +101,7 @@ includeTemplate('header');
 
       <label for="image">Imagen:</label>
       <input type="file" accept="image/jpeg, image/png" id="image" name="image">
+      <img src="/bienes-raices/images/<?php echo $estate['image'] ?>" alt="" class="imageSmall">
 
       <label for="description">Descripción:</label>
       <textarea name="description" id="description"><?php echo $description; ?></textarea>
@@ -133,7 +133,7 @@ includeTemplate('header');
       </select>
     </fieldset>
 
-    <input type="submit" class="btnGreen" value="Crear propiedad">
+    <input type="submit" class="btnGreen" value="Editar propiedad">
   </form>
 </main>
 
