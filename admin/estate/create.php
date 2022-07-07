@@ -1,6 +1,7 @@
 <?php
+require '../../includes/config/database.php';
+$db = dbConnection();
 
-declare(strict_types=1);
 require '../../includes/functions.php';
 includeTemplate('header');
 ?>
