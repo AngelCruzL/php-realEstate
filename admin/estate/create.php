@@ -23,6 +23,10 @@ $seller_id = '';
 $maxImageSize = 1000 * 1000; // (1mb)
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+  $estate = new Estate($_POST);
+
+  $estate->saveDB();
+
   $title = mysqli_real_escape_string($db, $_POST['title']);
   $price = mysqli_real_escape_string($db, $_POST['price']);
   $description = mysqli_real_escape_string($db, $_POST['description']);
@@ -30,7 +34,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $bathrooms = mysqli_real_escape_string($db, $_POST['bathrooms']);
   $park = mysqli_real_escape_string($db, $_POST['park']);
   $seller_id = mysqli_real_escape_string($db, $_POST['seller_id']);
-  $created_at = date('Y/m/d');
 
   $image = $_FILES['image'];
 
@@ -52,27 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $imageName = md5(uniqid(rand(), true)) . '.jpg';
     move_uploaded_file($image['tmp_name'], $imagesDirectory .  $imageName);
 
-    $createQuery = "INSERT INTO estates(
-      title,
-      price,
-      image,
-      description,
-      bedrooms,
-      bathrooms,
-      park,
-      created_at,
-      seller_id
-    ) VALUES (
-      '$title',
-      '$price',
-      '$imageName',
-      '$description',
-      '$bedrooms',
-      '$bathrooms',
-      '$park',
-      '$created_at',
-      '$seller_id'
-    );";
+
 
     $result = mysqli_query($db, $createQuery);
 
