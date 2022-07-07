@@ -8,11 +8,7 @@ body.darkMode {
     color: darken(v.$colorWhite, 30);
   }
 
-  a,
-  h1,
-  h2,
-  h3,
-  h4 {
+  :is(a, h1, h2, h3, h4) {
     color: v.$colorGrey;
   }
 
@@ -31,7 +27,7 @@ body.darkMode {
     color: darken(v.$colorWhite, 10);
   }
 
-  .contactForm {
+  .form {
     label,
     legend,
     p {
@@ -45,5 +41,9 @@ body.darkMode {
     background-color: v.$colorGreyDarker;
     border: 1px solid v.$colorGreyDarker;
     color: darken(v.$colorWhite, 30);
+  }
+
+  a[class^='btn'] {
+    color: v.$colorWhite;
   }
 }
