@@ -15,6 +15,8 @@ $bathrooms = '';
 $park = '';
 $seller = '';
 
+$maxImageSize = 1000 * 1000; // (1mb)
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $title = mysqli_real_escape_string($db, $_POST['title']);
   $price = mysqli_real_escape_string($db, $_POST['price']);
@@ -25,18 +27,30 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $seller_id = mysqli_real_escape_string($db, $_POST['seller_id']);
   $created_at = date('Y/m/d');
 
+  $image = $_FILES['image'];
+
   if (empty($title)) $errors[] = 'El título es obligatorio';
   if (empty($price)) $errors[] = 'El precio es obligatorio';
+  if (empty($image['name']) || $image['error']) $errors[] = 'La imagen es obligatoria';
   if (strlen($description) < 50) $errors[] = 'La descripción debe tener al menos 50 caracteres';
   if (empty($bedrooms)) $errors[] = 'El número de habitaciones es obligatorio';
   if (empty($bathrooms)) $errors[] = 'El número de baños es obligatorio';
   if (empty($park)) $errors[] = 'El número de lugares de estacionamiento es obligatorio';
   if (empty($seller_id)) $errors[] = 'El vendedor es obligatorio';
+  if ($image['size'] > $maxImageSize) $errors[] = 'La imagen es demasiado grande';
 
   if (empty($errors)) {
+    $imagesDirectory = '../../images/';
+
+    if (!is_dir($imagesDirectory)) mkdir($imagesDirectory);
+
+    $imageName = md5(uniqid(rand(), true)) . '.jpg';
+    move_uploaded_file($image['tmp_name'], $imagesDirectory .  $imageName);
+
     $createQuery = "INSERT INTO estates(
       title,
       price,
+      image,
       description,
       bedrooms,
       bathrooms,
@@ -46,6 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     ) VALUES (
       '$title',
       '$price',
+      '$imageName',
       '$description',
       '$bedrooms',
       '$bathrooms',
@@ -75,7 +90,7 @@ includeTemplate('header');
     </div>
   <?php endforeach; ?>
 
-  <form class="form" action="/bienes-raices/admin/estate/create.php" method="POST">
+  <form class="form" action="/bienes-raices/admin/estate/create.php" method="POST" enctype="multipart/form-data">
     <fieldset>
       <legend>Información general</legend>
 
@@ -86,7 +101,7 @@ includeTemplate('header');
       <input type="number" id="price" name="price" value="<?php echo $price; ?>" placeholder="Precio de la propiedad">
 
       <label for="image">Imagen:</label>
-      <input type="file" accept="image/jpeg, image/png" id="image">
+      <input type="file" accept="image/jpeg, image/png" id="image" name="image">
 
       <label for="description">Descripción:</label>
       <textarea name="description" id="description"><?php echo $description; ?></textarea>

@@ -4,6 +4,7 @@ node_modules
 dist
 dist-ssr
 build
+images
 *.local
 .env
 package-lock.json
