@@ -1,58 +1,54 @@
 <?php
+$id = $_GET['id'];
+$id = filter_var($id, FILTER_VALIDATE_INT);
 
-declare(strict_types=1);
+if (!$id) header("Location: /bienes-raices/src");
+
+require '../includes/config/database.php';
+$db = dbConnection();
+
+$getEstateQuery = "SELECT * FROM estates WHERE id=${id}";
+$result = mysqli_query($db, $getEstateQuery);
+
+if (!$result->num_rows) header("Location: /bienes-raices/src");
+
+
+$estate = mysqli_fetch_assoc($result);
+
 require '../includes/functions.php';
 includeTemplate('header');
 ?>
 
 <main class="section container centerContent">
-  <h1>Casa en venta frente al bosque</h1>
+  <h1><?php echo $estate['title']; ?></h1>
 
-  <picture>
-    <source srcset="../build/img/destacada.webp" type="image/webp" />
-    <source srcset="../build/img/destacada.jpg" type="image/jpeg" />
-    <img loading="lazy" src="../build/img/destacada.jpg" alt="anuncio" />
-  </picture>
+  <img loading="lazy" src="/bienes-raices/images/<?php echo $estate['image']; ?>" alt="anuncio" />
 
   <div class="propertyResume">
-    <p class="price">$3,000,000</p>
+    <p class="price"><?php echo $estate['price']; ?></p>
 
     <ul class="featureIcons">
       <li>
         <img loading="lazy" src="../build/img/icono_wc.svg" alt="Icono WC" />
-        <p>3</p>
+        <p><?php echo $estate['bathrooms']; ?></p>
       </li>
 
       <li>
         <img loading="lazy" src="../build/img/icono_estacionamiento.svg" alt="Icono WC" />
-        <p>3</p>
+        <p><?php echo $estate['bedrooms']; ?></p>
       </li>
 
       <li>
         <img loading="lazy" src="../build/img/icono_dormitorio.svg" alt="Icono WC" />
-        <p>4</p>
+        <p><?php echo $estate['park']; ?></p>
       </li>
     </ul>
 
-    <p>
-      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusamus,
-      dolore? Corrupti esse minus eligendi cupiditate illo a, harum sequi
-      quam voluptatem sunt rerum sapiente doloribus qui delectus
-      consequuntur quod ad? Lorem ipsum, dolor sit amet consectetur
-      adipisicing elit. Ea nam corporis quae asperiores? Deserunt
-      dignissimos accusamus mollitia. Fugiat, voluptatem. Temporibus impedit
-      earum beatae mollitia, facere corrupti saepe alias nobis reiciendis!
-    </p>
-
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti,
-      alias a! Harum molestias aut consequatur quisquam laboriosam sunt
-      tempora architecto quaerat provident asperiores quos et beatae,
-      nostrum ipsa officiis animi!
-    </p>
+    <p><?php echo $estate['description']; ?></p>
   </div>
 </main>
 
 <?php
 includeTemplate('footer');
+mysqli_close($db);
 ?>
