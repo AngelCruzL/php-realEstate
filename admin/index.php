@@ -1,4 +1,10 @@
 <?php
+require '../includes/config/database.php';
+$db = dbConnection();
+
+$getEstatesQuery = "SELECT * FROM estates";
+$estates = mysqli_query($db, $getEstatesQuery);
+
 $created = $_GET['created'] ?? null;
 
 require '../includes/functions.php';
@@ -28,18 +34,23 @@ includeTemplate('header');
     </thead>
 
     <tbody>
-      <tr>
-        <td>1</td>
-        <td>Casa en la playa</td>
-        <td><img src="/bienes-raices/images/5c3f7b96de4e4da036b0468a22b564b6.jpg" class="tableImage" alt="imagen table"></td>
-        <td>$1234000</td>
-        <td>
-          <a class="btnRed-block" href="#">Eliminar</a>
-          <a class="btnYellow-block" href="#">Actualizar</a>
-        </td>
-      </tr>
+      <?php while ($estate = mysqli_fetch_assoc($estates)) : ?>
+        <tr>
+          <td><?php echo $estate['id']; ?></td>
+          <td><?php echo $estate['title']; ?></td>
+          <td><img src="/bienes-raices/images/<?php echo $estate['image']; ?>" class="tableImage" alt="imagen table"></td>
+          <td>$<?php echo $estate['price']; ?></td>
+          <td>
+            <a class="btnRed-block" href="#">Eliminar</a>
+            <a class="btnYellow-block" href="#">Actualizar</a>
+          </td>
+        </tr>
+      <?php endwhile; ?>
     </tbody>
   </table>
 </main>
 
-<?php includeTemplate('footer') ?>
+<?php
+mysqli_close($db);
+includeTemplate('footer')
+?>
