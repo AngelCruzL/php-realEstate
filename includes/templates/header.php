@@ -1,3 +1,9 @@
+<?php
+if (!isset($_SESSION)) session_start();
+
+$isAuth = $_SESSION['logged'] ?? false;
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,6 +37,9 @@
               <li><a href="/bienes-raices/src/announcements.php">Anuncios</a></li>
               <li><a href="/bienes-raices/src/blog.php">Blog</a></li>
               <li><a href="/bienes-raices/src/contact.php">Contacto</a></li>
+              <?php if ($isAuth) : ?>
+                <li><a href="/bienes-raices/src/logout.php">Cerrar Sesión</a></li>
+              <?php endif; ?>
             </ul>
           </nav>
         </div>
