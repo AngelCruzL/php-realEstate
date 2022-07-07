@@ -1,7 +1,5 @@
 <?php
-
-declare(strict_types=1);
-require '../includes/functions.php';
+require 'includes/app.php';
 includeTemplate('header', true);
 ?>
 
@@ -10,7 +8,7 @@ includeTemplate('header', true);
 
   <div class="aboutUs-icons">
     <div class="icon">
-      <img src="../build/img/icono1.svg" alt="Icono seguridad" loading="lazy" />
+      <img src="build/img/icono1.svg" alt="Icono seguridad" loading="lazy" />
 
       <h3>Seguridad</h3>
 
@@ -22,7 +20,7 @@ includeTemplate('header', true);
     </div>
 
     <div class="icon">
-      <img src="../build/img/icono2.svg" alt="Icono precio" loading="lazy" />
+      <img src="build/img/icono2.svg" alt="Icono precio" loading="lazy" />
 
       <h3>Precio</h3>
 
@@ -33,7 +31,7 @@ includeTemplate('header', true);
       </p>
     </div>
     <div class="icon">
-      <img src="../build/img/icono3.svg" alt="Icono tiempo" loading="lazy" />
+      <img src="build/img/icono3.svg" alt="Icono tiempo" loading="lazy" />
 
       <h3>A tiempo</h3>
 
@@ -51,7 +49,7 @@ includeTemplate('header', true);
 
   <?php
   $limit = 3;
-  include '../includes/templates/announcement.php';
+  include 'includes/templates/announcement.php';
   ?>
 
   <div class="alignEnd">
@@ -75,9 +73,9 @@ includeTemplate('header', true);
     <article class="blogPost">
       <div class="image">
         <picture>
-          <source srcset="../build/img/blog1.webp" type="image/webp" />
-          <source srcset="../build/img/blog1.jpg" type="image/jpeg" />
-          <img loading="lazy" src="../build/img/blog1.jpg" alt="blog" />
+          <source srcset="build/img/blog1.webp" type="image/webp" />
+          <source srcset="build/img/blog1.jpg" type="image/jpeg" />
+          <img loading="lazy" src="build/img/blog1.jpg" alt="blog" />
         </picture>
       </div>
 
@@ -99,9 +97,9 @@ includeTemplate('header', true);
     <article class="blogPost">
       <div class="image">
         <picture>
-          <source srcset="../build/img/blog2.webp" type="image/webp" />
-          <source srcset="../build/img/blog2.jpg" type="image/jpeg" />
-          <img loading="lazy" src="../build/img/blog2.jpg" alt="blog" />
+          <source srcset="build/img/blog2.webp" type="image/webp" />
+          <source srcset="build/img/blog2.jpg" type="image/jpeg" />
+          <img loading="lazy" src="build/img/blog2.jpg" alt="blog" />
         </picture>
       </div>
 
