@@ -20,7 +20,7 @@ $isAuth = $_SESSION['logged'] ?? false;
   <header class="header <?php echo $isIndex ? 'mainHeader' : '' ?>">
     <div class="container headerContent">
       <div class="navbar <?php echo $isIndex ? 'home' : '' ?>">
-        <a href="/bienes-raices/src/index.php">
+        <a href="/bienes-raices/index.php">
           <img src="/bienes-raices/build/img/logo.svg" alt="Bienes Raíces logo" />
         </a>
 
@@ -33,12 +33,12 @@ $isAuth = $_SESSION['logged'] ?? false;
 
           <nav class="mainNavigation <?php echo $isIndex ? 'home' : '' ?>">
             <ul>
-              <li><a href="/bienes-raices/src/about.php">Nosotros</a></li>
-              <li><a href="/bienes-raices/src/announcements.php">Anuncios</a></li>
-              <li><a href="/bienes-raices/src/blog.php">Blog</a></li>
-              <li><a href="/bienes-raices/src/contact.php">Contacto</a></li>
+              <li><a href="/bienes-raices/about.php">Nosotros</a></li>
+              <li><a href="/bienes-raices/announcements.php">Anuncios</a></li>
+              <li><a href="/bienes-raices/blog.php">Blog</a></li>
+              <li><a href="/bienes-raices/contact.php">Contacto</a></li>
               <?php if ($isAuth) : ?>
-                <li><a href="/bienes-raices/src/logout.php">Cerrar Sesión</a></li>
+                <li><a href="/bienes-raices/logout.php">Cerrar Sesión</a></li>
               <?php endif; ?>
             </ul>
           </nav>

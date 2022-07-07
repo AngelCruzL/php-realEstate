@@ -1,7 +1,7 @@
 <?php
 require '../../includes/functions.php';
 $isAuth = isAuthenticated();
-if (!$isAuth) header('Location: /bienes-raices/src/login.php');
+if (!$isAuth) header('Location: /bienes-raices/login.php');
 
 $id = $_GET['id'];
 $id = filter_var($id, FILTER_VALIDATE_INT);

@@ -1,7 +1,5 @@
 <?php
-
-declare(strict_types=1);
-require '../includes/functions.php';
+require 'includes/app.php';
 includeTemplate('header');
 ?>
 
@@ -10,9 +8,9 @@ includeTemplate('header');
   <div class="aboutContent">
     <div class="image">
       <picture>
-        <source srcset="../build/img/nosotros.webp" type="img/webp" />
-        <source srcset="../build/img/nosotros.jpg" type="img/jpeg" />
-        <img loading="lazy" src="../build/img/nosotros.jpg" alt="Sobre nosotros" />
+        <source srcset="build/img/nosotros.webp" type="img/webp" />
+        <source srcset="build/img/nosotros.jpg" type="img/jpeg" />
+        <img loading="lazy" src="build/img/nosotros.jpg" alt="Sobre nosotros" />
       </picture>
     </div>
 
@@ -45,7 +43,7 @@ includeTemplate('header');
 
   <div class="aboutUs-icons">
     <div class="icon">
-      <img src="../build/img/icono1.svg" alt="Icono seguridad" loading="lazy" />
+      <img src="build/img/icono1.svg" alt="Icono seguridad" loading="lazy" />
 
       <h3>Seguridad</h3>
 
@@ -57,7 +55,7 @@ includeTemplate('header');
     </div>
 
     <div class="icon">
-      <img src="../build/img/icono2.svg" alt="Icono precio" loading="lazy" />
+      <img src="build/img/icono2.svg" alt="Icono precio" loading="lazy" />
 
       <h3>Precio</h3>
 
@@ -68,7 +66,7 @@ includeTemplate('header');
       </p>
     </div>
     <div class="icon">
-      <img src="../build/img/icono3.svg" alt="Icono tiempo" loading="lazy" />
+      <img src="build/img/icono3.svg" alt="Icono tiempo" loading="lazy" />
 
       <h3>A tiempo</h3>
 

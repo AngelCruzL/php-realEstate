@@ -1,7 +1,7 @@
 <?php
 require '../includes/functions.php';
 $isAuth = isAuthenticated();
-if (!$isAuth) header('Location: /bienes-raices/src/login.php');
+if (!$isAuth) header('Location: /bienes-raices/login.php');
 
 require '../includes/config/database.php';
 $db = dbConnection();

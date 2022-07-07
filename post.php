@@ -1,7 +1,5 @@
 <?php
-
-declare(strict_types=1);
-require '../includes/functions.php';
+require 'includes/app.php';
 includeTemplate('header');
 ?>
 
@@ -13,9 +11,9 @@ includeTemplate('header');
   </p>
 
   <picture>
-    <source srcset="../build/img/destacada2.webp" type="image/webp" />
-    <source srcset="../build/img/destacada2.jpg" type="image/jpeg" />
-    <img loading="lazy" src="../build/img/destacada2.jpg" alt="anuncio" />
+    <source srcset="build/img/destacada2.webp" type="image/webp" />
+    <source srcset="build/img/destacada2.jpg" type="image/jpeg" />
+    <img loading="lazy" src="build/img/destacada2.jpg" alt="anuncio" />
   </picture>
 
   <div class="propertyResume">

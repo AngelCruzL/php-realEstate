@@ -1,7 +1,5 @@
 <?php
-
-declare(strict_types=1);
-require '../includes/functions.php';
+require 'includes/app.php';
 includeTemplate('header');
 ?>
 
@@ -10,7 +8,7 @@ includeTemplate('header');
 
   <?php
   $limit = 10;
-  include '../includes/templates/announcement.php';
+  include 'includes/templates/announcement.php';
   ?>
 </main>
 

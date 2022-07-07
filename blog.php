@@ -1,7 +1,5 @@
 <?php
-
-declare(strict_types=1);
-require '../includes/functions.php';
+require 'includes/app.php';
 includeTemplate('header');
 ?>
 
@@ -11,9 +9,9 @@ includeTemplate('header');
   <article class="blogPost">
     <div class="image">
       <picture>
-        <source srcset="../build/img/blog1.webp" type="image/webp" />
-        <source srcset="../build/img/blog1.jpg" type="image/jpeg" />
-        <img loading="lazy" src="../build/img/blog1.jpg" alt="blog" />
+        <source srcset="build/img/blog1.webp" type="image/webp" />
+        <source srcset="build/img/blog1.jpg" type="image/jpeg" />
+        <img loading="lazy" src="build/img/blog1.jpg" alt="blog" />
       </picture>
     </div>
 
@@ -35,9 +33,9 @@ includeTemplate('header');
   <article class="blogPost">
     <div class="image">
       <picture>
-        <source srcset="../build/img/blog2.webp" type="image/webp" />
-        <source srcset="../build/img/blog2.jpg" type="image/jpeg" />
-        <img loading="lazy" src="../build/img/blog2.jpg" alt="blog" />
+        <source srcset="build/img/blog2.webp" type="image/webp" />
+        <source srcset="build/img/blog2.jpg" type="image/jpeg" />
+        <img loading="lazy" src="build/img/blog2.jpg" alt="blog" />
       </picture>
     </div>
 
@@ -59,9 +57,9 @@ includeTemplate('header');
   <article class="blogPost">
     <div class="image">
       <picture>
-        <source srcset="../build/img/blog3.webp" type="image/webp" />
-        <source srcset="../build/img/blog3.jpg" type="image/jpeg" />
-        <img loading="lazy" src="../build/img/blog3.jpg" alt="blog" />
+        <source srcset="build/img/blog3.webp" type="image/webp" />
+        <source srcset="build/img/blog3.jpg" type="image/jpeg" />
+        <img loading="lazy" src="build/img/blog3.jpg" alt="blog" />
       </picture>
     </div>
 
@@ -83,9 +81,9 @@ includeTemplate('header');
   <article class="blogPost">
     <div class="image">
       <picture>
-        <source srcset="../build/img/blog4.webp" type="image/webp" />
-        <source srcset="../build/img/blog4.jpg" type="image/jpeg" />
-        <img loading="lazy" src="../build/img/blog4.jpg" alt="blog" />
+        <source srcset="build/img/blog4.webp" type="image/webp" />
+        <source srcset="build/img/blog4.jpg" type="image/jpeg" />
+        <img loading="lazy" src="build/img/blog4.jpg" alt="blog" />
       </picture>
     </div>
 

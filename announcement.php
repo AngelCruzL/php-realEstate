@@ -4,7 +4,7 @@ $id = filter_var($id, FILTER_VALIDATE_INT);
 
 if (!$id) header("Location: /bienes-raices/src");
 
-require '../includes/config/database.php';
+require 'includes/app.php';
 $db = dbConnection();
 
 $getEstateQuery = "SELECT * FROM estates WHERE id=${id}";
@@ -12,10 +12,8 @@ $result = mysqli_query($db, $getEstateQuery);
 
 if (!$result->num_rows) header("Location: /bienes-raices/src");
 
-
 $estate = mysqli_fetch_assoc($result);
 
-require '../includes/functions.php';
 includeTemplate('header');
 ?>
 
@@ -29,17 +27,17 @@ includeTemplate('header');
 
     <ul class="featureIcons">
       <li>
-        <img loading="lazy" src="../build/img/icono_wc.svg" alt="Icono WC" />
+        <img loading="lazy" src="build/img/icono_wc.svg" alt="Icono WC" />
         <p><?php echo $estate['bathrooms']; ?></p>
       </li>
 
       <li>
-        <img loading="lazy" src="../build/img/icono_estacionamiento.svg" alt="Icono WC" />
+        <img loading="lazy" src="build/img/icono_estacionamiento.svg" alt="Icono WC" />
         <p><?php echo $estate['bedrooms']; ?></p>
       </li>
 
       <li>
-        <img loading="lazy" src="../build/img/icono_dormitorio.svg" alt="Icono WC" />
+        <img loading="lazy" src="build/img/icono_dormitorio.svg" alt="Icono WC" />
         <p><?php echo $estate['park']; ?></p>
       </li>
     </ul>

@@ -7,5 +7,3 @@ require __DIR__ . '/../vendor/autoload.php';
 use App\Estate;
 
 $estate = new Estate();
-
-var_dump($estate);
