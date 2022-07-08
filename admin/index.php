@@ -1,12 +1,10 @@
 <?php
 require '../includes/app.php';
-
 isAuthenticated();
 
-$db = dbConnection();
+use App\Estate;
 
-$getEstatesQuery = "SELECT * FROM estates";
-$estates = mysqli_query($db, $getEstatesQuery);
+$estates = Estate::getAllEstates();
 
 $status = $_GET['status'] ?? null;
 
@@ -61,21 +59,21 @@ includeTemplate('header');
     </thead>
 
     <tbody>
-      <?php while ($estate = mysqli_fetch_assoc($estates)) : ?>
+      <?php foreach ($estates as $estate) : ?>
         <tr>
-          <td><?php echo $estate['id']; ?></td>
-          <td><?php echo $estate['title']; ?></td>
-          <td><img src="/bienes-raices/images/<?php echo $estate['image']; ?>" class="tableImage" alt="imagen table"></td>
-          <td>$<?php echo $estate['price']; ?></td>
+          <td><?php echo $estate->id; ?></td>
+          <td><?php echo $estate->title; ?></td>
+          <td><img src="/bienes-raices/images/<?php echo $estate->image; ?>" class="tableImage" alt="imagen table"></td>
+          <td>$<?php echo $estate->price; ?></td>
           <td>
             <form method="POST">
-              <input type="hidden" name="id" value="<?php echo $estate['id'] ?>">
+              <input type="hidden" name="id" value="<?php echo $estate->id ?>">
               <input type="submit" class="btnRed-block w100" value="Eliminar" />
             </form>
-            <a class="btnYellow-block" href="/bienes-raices/admin/estate/update.php?id=<?php echo $estate['id']; ?>">Actualizar</a>
+            <a class="btnYellow-block" href="/bienes-raices/admin/estate/update.php?id=<?php echo $estate->id; ?>">Actualizar</a>
           </td>
         </tr>
-      <?php endwhile; ?>
+      <?php endforeach; ?>
     </tbody>
   </table>
 </main>

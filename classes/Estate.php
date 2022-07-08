@@ -35,7 +35,7 @@ class Estate
     $this->id = $args['id'] ?? '';
     $this->title = $args['title'] ?? '';
     $this->price = $args['price'] ?? '';
-    // $this->image = $args['image'] ?? '';
+    $this->image = $args['image'] ?? '';
     $this->description = $args['description'] ?? '';
     $this->bedrooms = $args['bedrooms'] ?? '';
     $this->bathrooms = $args['bathrooms'] ?? '';
@@ -110,5 +110,39 @@ class Estate
     if (empty($this->seller_id)) self::$errors[] = 'El vendedor es obligatorio';
 
     return self::$errors;
+  }
+
+  public static function getAllEstates()
+  {
+    $query = "SELECT * FROM estates";
+    $result = self::sqlConsult($query);
+    return $result;
+  }
+
+  public static function sqlConsult($query)
+  {
+    $result = self::$db->query($query);
+
+    $array = [];
+    while ($row = $result->fetch_assoc()) {
+      $array[] = self::createObject($row);
+    }
+
+    $result->free();
+
+    return $array;
+  }
+
+  protected static function createObject($register)
+  {
+    $object = new self;
+
+    foreach ($register as $key => $value) {
+      if (property_exists($object, $key)) {
+        $object->$key = $value;
+      }
+    }
+
+    return $object;
   }
 }

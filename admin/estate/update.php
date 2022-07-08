@@ -1,7 +1,6 @@
 <?php
 require '../../includes/functions.php';
-$isAuth = isAuthenticated();
-if (!$isAuth) header('Location: /bienes-raices/login.php');
+isAuthenticated();
 
 $id = $_GET['id'];
 $id = filter_var($id, FILTER_VALIDATE_INT);

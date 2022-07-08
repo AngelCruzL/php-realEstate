@@ -36,6 +36,28 @@ INSERT INTO sellers(
   '1234567890'
 );
 
+INSERT INTO estates(
+  title,
+  price,
+  image,
+  description,
+  bedrooms,
+  bathrooms,
+  park,
+  created_at,
+  seller_id
+) VALUES(
+  'Casa frente al lago',
+  '1000000',
+  'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+  'Casa en buen estado, contiene una gran vista panoramica para el lago.',
+  2,
+  2,
+  1,
+  '2020-01-01',
+  1
+);
+
 CREATE TABLE users(
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   email VARCHAR(50) UNIQUE NOT NULL,
