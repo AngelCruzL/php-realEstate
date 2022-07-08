@@ -15,12 +15,12 @@ $sellers = mysqli_query($db, $getSellersQuery);
 $errors = Estate::getErrors();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-  $estate = new Estate($_POST);
+  $estate = new Estate($_POST['estate']);
 
   $imageName = md5(uniqid(rand(), true)) . '.jpg';
 
-  if ($_FILES['image']['tmp_name']) {
-    $image = Image::make($_FILES['image']['tmp_name'])->fit(800, 600);
+  if ($_FILES['estate']['tmp_name']['image']) {
+    $image = Image::make($_FILES['estate']['tmp_name']['image'])->fit(800, 600);
     $estate->setImage($imageName);
   }
 

@@ -41,7 +41,7 @@ class Estate
     $this->bathrooms = $args['bathrooms'] ?? '';
     $this->park = $args['park'] ?? '';
     $this->created_at = date('Y/m/d');
-    $this->seller_id = $args['seller_id'] ?? '';
+    $this->seller_id = $args['seller_id'] ?? '1';
   }
 
   public static function setDB($database)
@@ -78,6 +78,12 @@ class Estate
 
   public function setImage($image)
   {
+    if (isset($this->id)) {
+      $fileExistes = file_exists(IMAGES_DIRECTORY . $this->image);
+
+      if ($fileExistes) unlink(IMAGES_DIRECTORY . $this->image);
+    }
+
     if ($image) $this->image = $image;
   }
 
@@ -107,7 +113,7 @@ class Estate
     if (empty($this->bedrooms)) self::$errors[] = 'El número de habitaciones es obligatorio';
     if (empty($this->bathrooms)) self::$errors[] = 'El número de baños es obligatorio';
     if (empty($this->park)) self::$errors[] = 'El número de lugares de estacionamiento es obligatorio';
-    if (empty($this->seller_id)) self::$errors[] = 'El vendedor es obligatorio';
+    // if (empty($this->seller_id)) self::$errors[] = 'El vendedor es obligatorio';
 
     return self::$errors;
   }
@@ -117,6 +123,13 @@ class Estate
     $query = "SELECT * FROM estates";
     $result = self::sqlConsult($query);
     return $result;
+  }
+
+  public static function getEstateById($id)
+  {
+    $query = "SELECT * FROM estates WHERE id = ${id}";
+    $result = self::sqlConsult($query);
+    return array_shift($result);
   }
 
   public static function sqlConsult($query)
@@ -144,5 +157,19 @@ class Estate
     }
 
     return $object;
+  }
+
+  /**
+   * It takes an array of key/value pairs and assigns the values to the object's properties
+   *
+   * @param args An array of key/value pairs to sync with the current object's properties.
+   */
+  public function sync($args = [])
+  {
+    foreach ($args as $key => $value) {
+      if (property_exists($this, $key) && !is_null($value)) {
+        $this->$key = $value;
+      }
+    }
   }
 }
