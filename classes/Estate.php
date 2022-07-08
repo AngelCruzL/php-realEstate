@@ -32,7 +32,7 @@ class Estate
 
   public function __construct($args = [])
   {
-    $this->id = $args['id'] ?? '';
+    $this->id = $args['id'] ?? null;
     $this->title = $args['title'] ?? '';
     $this->price = $args['price'] ?? '';
     $this->image = $args['image'] ?? '';
@@ -51,7 +51,7 @@ class Estate
 
   public function saveDB()
   {
-    if (isset($this->id)) {
+    if (!is_null($this->id)) {
       $this->updateEstate();
     } else {
       $this->createEstate();
@@ -69,8 +69,7 @@ class Estate
       "' );";
 
     $result = self::$db->query($query);
-
-    return $result;
+    if ($result) header('Location: /bienes-raices/admin?status=1');
   }
 
   private function updateEstate()
@@ -117,9 +116,7 @@ class Estate
 
   public function setImage($image)
   {
-    if (isset($this->id)) {
-      $this->deleteImage();
-    }
+    if (!is_null($this->id)) $this->deleteImage();
 
     if ($image) $this->image = $image;
   }

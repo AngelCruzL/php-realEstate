@@ -30,8 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (!is_dir(IMAGES_DIRECTORY)) mkdir(IMAGES_DIRECTORY);
     $image->save(IMAGES_DIRECTORY . $imageName);
 
-    $result =  $estate->saveDB();
-    if ($result) header('Location: /bienes-raices/admin?status=1');
+    $estate->saveDB();
   }
 }
 
