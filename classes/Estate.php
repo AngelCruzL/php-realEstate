@@ -51,17 +51,45 @@ class Estate
 
   public function saveDB()
   {
+    if (isset($this->id)) {
+      $this->updateEstate();
+    } else {
+      $this->createEstate();
+    }
+  }
+
+  private function createEstate()
+  {
     $sanitizedData = $this->sanitizeData();
 
-    $createQuery = "INSERT INTO estates( " .
+    $query = "INSERT INTO estates( " .
       join(', ', array_keys($sanitizedData)) .
       " ) VALUES ( '" .
       join("', '", array_values($sanitizedData)) .
       "' );";
 
-    $result =  self::$db->query($createQuery);
+    $result = self::$db->query($query);
 
     return $result;
+  }
+
+  private function updateEstate()
+  {
+    $sanitizedData = $this->sanitizeData();
+
+    $values = [];
+    foreach ($sanitizedData as $key => $value) {
+      $values[] = "{$key}='{$value}'";
+    }
+
+    $query = "UPDATE estates SET " .
+      join(', ', $values) .
+      " WHERE id = " . self::$db->escape_string($this->id) .
+      " LIMIT 1;";
+
+    $result = self::$db->query($query);
+
+    if ($result) header('Location: /bienes-raices/admin?status=2');
   }
 
   public function mapData()

@@ -32,22 +32,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   }
 
   if (empty($errors)) {
-
-
-    $updateQuery = "UPDATE estates
-    SET title = '${title}',
-      price = '${price}',
-      image = '${imageName}',
-      description = '${description}',
-      bedrooms = ${bedrooms},
-      bathrooms = ${bathrooms},
-      park = ${park},
-      seller_id = ${seller_id}
-    WHERE id = ${id}";
-
-    $result = mysqli_query($db, $updateQuery);
-
-    if ($result) header('Location: /bienes-raices/admin?status=2');
+    $image->save(IMAGES_DIRECTORY . $imageName);
+    $estate->saveDB();
   }
 }
 
@@ -68,7 +54,7 @@ includeTemplate('header');
   <form class="form" method="POST" enctype="multipart/form-data">
     <?php include '../../includes/templates/form_estates.php'; ?>
 
-    <input type="submit" class="btnGreen" value="Editar propiedad">
+    <input type="submit" class="btnGreen" value="Actualizar propiedad">
   </form>
 </main>
 
