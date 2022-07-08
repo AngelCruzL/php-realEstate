@@ -92,6 +92,17 @@ class Estate
     if ($result) header('Location: /bienes-raices/admin?status=2');
   }
 
+  public function deleteEstate()
+  {
+    $query = "DELETE FROM estates WHERE id = " . self::$db->escape_string($this->id) . " LIMIT 1;";
+    $result = self::$db->query($query);
+
+    if ($result) {
+      $this->deleteImage();
+      header('Location: /bienes-raices/admin?status=3');
+    }
+  }
+
   public function mapData()
   {
     $data = [];
@@ -107,12 +118,16 @@ class Estate
   public function setImage($image)
   {
     if (isset($this->id)) {
-      $fileExistes = file_exists(IMAGES_DIRECTORY . $this->image);
-
-      if ($fileExistes) unlink(IMAGES_DIRECTORY . $this->image);
+      $this->deleteImage();
     }
 
     if ($image) $this->image = $image;
+  }
+
+  public function deleteImage()
+  {
+    $fileExistes = file_exists(IMAGES_DIRECTORY . $this->image);
+    if ($fileExistes) unlink(IMAGES_DIRECTORY . $this->image);
   }
 
   public function sanitizeData()

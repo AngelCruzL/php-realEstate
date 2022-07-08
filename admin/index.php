@@ -13,15 +13,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $id = filter_var($id, FILTER_VALIDATE_INT);
 
   if ($id) {
-    $getEstateImageQuery = "SELECT image FROM estates WHERE id = ${id};";
-    $result = mysqli_query($db, $getEstateImageQuery);
-    $estateImage = mysqli_fetch_assoc($result);
-    unlink('../images/' . $estateImage['image']);
-
-    $deleteQuery = "DELETE FROM estates WHERE id = ${id};";
-    $deleteEstate = mysqli_query($db, $deleteQuery);
-
-    if ($deleteEstate) header('Location: /bienes-raices/admin?status=3');
+    $estate = Estate::getEstateById($id);
+    $estate->deleteEstate();
   }
 }
 
