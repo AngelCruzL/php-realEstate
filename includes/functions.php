@@ -23,3 +23,9 @@ function debug($variableToDebug)
 
   exit;
 }
+
+/* A function that is used to sanitize the html code. */
+function s($html): string
+{
+  return htmlspecialchars($html, ENT_QUOTES, 'UTF-8');
+}
