@@ -10,7 +10,7 @@ if (!$id) header('Location: /bienes-raices/admin');
 use App\Estate;
 use Intervention\Image\ImageManagerStatic as Image;
 
-$estate = Estate::getEstateById($id);
+$estate = Estate::find($id);
 
 $getSellersQuery = "SELECT * FROM sellers";
 $sellers = mysqli_query($db, $getSellersQuery);
@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   if (empty($errors)) {
     $image->save(IMAGES_DIRECTORY . $imageName);
-    $estate->saveDB();
+    $estate->save();
   }
 }
 

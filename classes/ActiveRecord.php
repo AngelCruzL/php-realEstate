@@ -17,6 +17,7 @@ class ActiveRecord
     'created_at',
     'seller_id'
   ];
+  protected static $table = '';
 
   protected static $errors = [];
 
@@ -50,20 +51,20 @@ class ActiveRecord
     self::$db = $database;
   }
 
-  public function saveDB()
+  public function save()
   {
     if (!is_null($this->id)) {
-      $this->updateEstate();
+      $this->update();
     } else {
-      $this->createEstate();
+      $this->create();
     }
   }
 
-  private function createEstate()
+  private function create()
   {
     $sanitizedData = $this->sanitizeData();
 
-    $query = "INSERT INTO estates( " .
+    $query = "INSERT INTO " . static::$table . " ( " .
       join(', ', array_keys($sanitizedData)) .
       " ) VALUES ( '" .
       join("', '", array_values($sanitizedData)) .
@@ -73,7 +74,7 @@ class ActiveRecord
     if ($result) header('Location: /bienes-raices/admin?status=1');
   }
 
-  private function updateEstate()
+  private function update()
   {
     $sanitizedData = $this->sanitizeData();
 
@@ -82,19 +83,23 @@ class ActiveRecord
       $values[] = "{$key}='{$value}'";
     }
 
-    $query = "UPDATE estates SET " .
+    $query = "UPDATE " . static::$table . " SET " .
       join(', ', $values) .
       " WHERE id = " . self::$db->escape_string($this->id) .
       " LIMIT 1;";
+    // TODO: Fix the query to include the table name.
+    debug($query);
 
     $result = self::$db->query($query);
 
     if ($result) header('Location: /bienes-raices/admin?status=2');
   }
 
-  public function deleteEstate()
+  public function delete()
   {
-    $query = "DELETE FROM estates WHERE id = " . self::$db->escape_string($this->id) . " LIMIT 1;";
+    $query = "DELETE FROM " . static::$table . " WHERE id = " . self::$db->escape_string($this->id) . " LIMIT 1;";
+    // TODO: Fix the query to include the table name.
+    debug($query);
     $result = self::$db->query($query);
 
     if ($result) {
@@ -159,16 +164,28 @@ class ActiveRecord
     return self::$errors;
   }
 
-  public static function getAllEstates()
+  /**
+   * It returns all the rows from the table.
+   *
+   * @return An array of objects.
+   */
+  public static function all()
   {
-    $query = "SELECT * FROM estates";
+    $query = "SELECT * FROM " . static::$table . ";";
     $result = self::sqlConsult($query);
     return $result;
   }
 
-  public static function getEstateById($id)
+  /**
+   * It takes an id, queries the database for the table with that id, and returns the result
+   *
+   * @param id The id of the register you want to get.
+   *
+   * @return An array of the first row of the result set.
+   */
+  public static function find($id)
   {
-    $query = "SELECT * FROM estates WHERE id = ${id}";
+    $query = "SELECT * FROM " . static::$table . " WHERE id = ${id}";
     $result = self::sqlConsult($query);
     return array_shift($result);
   }
