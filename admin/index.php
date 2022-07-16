@@ -35,15 +35,12 @@ includeTemplate('header');
 <main class="container section">
   <h1>Administrador de bienes raíces</h1>
 
-  <?php if (!is_null($status)) : ?>
+  <?php
+  $message = showNotification($status);
+  if ($message) :
+  ?>
     <div class="alert alertSuccess">
-      <?php if (intval($status) === 1) : ?>
-        <p>Anuncio creado correctamente</p>
-      <?php elseif (intval($status) === 2) : ?>
-        <p>Anuncio actualizado correctamente</p>
-      <?php elseif (intval($status) === 3) : ?>
-        <p>Anuncio eliminado correctamente</p>
-      <?php endif; ?>
+      <p><?php echo s($message) ?></p>
     </div>
   <?php endif; ?>
 

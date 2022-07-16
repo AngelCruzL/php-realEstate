@@ -24,7 +24,13 @@ function debug($variableToDebug)
   exit;
 }
 
-/* A function that is used to sanitize the html code. */
+/**
+ * A function that is used to sanitize the html code.
+ *
+ * @param html The HTML to be escaped.
+ *
+ * @return string the htmlspecialchars() function.
+ */
 function s($html): string
 {
   return htmlspecialchars($html, ENT_QUOTES, 'UTF-8');
@@ -42,4 +48,36 @@ function validateContentType($contentType)
   $types = ['estate', 'seller'];
 
   return in_array($contentType, $types);
+}
+
+/**
+ * It returns a message based on the status code
+ *
+ * @param statusCode 1 =&gt; created, 2 =&gt; updated, 3 =&gt; deleted
+ *
+ * @return the value of the message.
+ */
+function showNotification($statusCode)
+{
+  $message = '';
+
+  switch ($statusCode) {
+    case 1:
+      $message = 'Registro creado correctamente';
+      break;
+
+    case 2:
+      $message = 'Registro actualizado correctamente';
+      break;
+
+    case 3:
+      $message = 'Registro eliminado correctamente';
+      break;
+
+    default:
+      $message = false;
+      break;
+  }
+
+  return $message;
 }
