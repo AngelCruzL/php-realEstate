@@ -29,3 +29,17 @@ function s($html): string
 {
   return htmlspecialchars($html, ENT_QUOTES, 'UTF-8');
 }
+
+/**
+ * If the content type is in the array of types allowed to delete, return true, otherwise return false
+ *
+ * @param contentType The type of content you want to retrieve.
+ *
+ * @return a boolean value.
+ */
+function validateContentType($contentType)
+{
+  $types = ['estate', 'seller'];
+
+  return in_array($contentType, $types);
+}

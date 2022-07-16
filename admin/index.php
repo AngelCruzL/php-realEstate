@@ -14,10 +14,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $id = $_POST['id'];
   $id = filter_var($id, FILTER_VALIDATE_INT);
 
-
   if ($id) {
-    $estate = Estate::find($id);
-    $estate->delete();
+    $content_type = $_POST['type'];
+
+    if (validateContentType($content_type)) {
+      if ($content_type === 'estate') {
+        $estate = Estate::find($id);
+        $estate->delete();
+      } else if ($content_type === 'seller') {
+        $seller = Seller::find($id);
+        $seller->delete();
+      }
+    }
   }
 }
 
@@ -63,6 +71,7 @@ includeTemplate('header');
           <td>
             <form method="POST">
               <input type="hidden" name="id" value="<?php echo $estate->id ?>">
+              <input type="hidden" name="type" value="estate">
               <input type="submit" class="btnRed-block w100" value="Eliminar" />
             </form>
             <a class="btnYellow-block" href="/bienes-raices/admin/estate/update.php?id=<?php echo $estate->id; ?>">Actualizar</a>
