@@ -122,7 +122,7 @@ class ActiveRecord
     if (empty($this->bedrooms)) self::$errors[] = 'El número de habitaciones es obligatorio';
     if (empty($this->bathrooms)) self::$errors[] = 'El número de baños es obligatorio';
     if (empty($this->park)) self::$errors[] = 'El número de lugares de estacionamiento es obligatorio';
-    // if (empty($this->seller_id)) self::$errors[] = 'El vendedor es obligatorio';
+    if (empty($this->seller_id)) self::$errors[] = 'El vendedor es obligatorio';
 
     return self::$errors;
   }

@@ -3,14 +3,11 @@ require '../../includes/app.php';
 isAuthenticated();
 
 use App\Estate;
+use App\Seller;
 use Intervention\Image\ImageManagerStatic as Image;
 
-$db = dbConnection();
-
 $estate = new Estate;
-
-$getSellersQuery = "SELECT * FROM sellers";
-$sellers = mysqli_query($db, $getSellersQuery);
+$sellers = Seller::all();
 
 $errors = Estate::getErrors();
 
