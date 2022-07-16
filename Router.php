@@ -19,7 +19,12 @@ class Router
 
     if ($httpMethod === 'GET') {
       $controller = $this->routesGet[$currentUrl] ?? null;
-      debug($controller);
+
+      if ($controller) {
+        call_user_func($controller, $this);
+      } else {
+        echo '404 - Page not found';
+      }
     }
   }
 }
