@@ -3,8 +3,12 @@ require '../includes/app.php';
 isAuthenticated();
 
 use App\Estate;
+use App\Seller;
 
-$estates = Estate::getAllEstates();
+$estates = Estate::all();
+$sellers = Seller::all();
+
+// debug($sellers);
 
 $status = $_GET['status'] ?? null;
 
@@ -12,9 +16,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $id = $_POST['id'];
   $id = filter_var($id, FILTER_VALIDATE_INT);
 
+
   if ($id) {
-    $estate = Estate::getEstateById($id);
-    $estate->deleteEstate();
+    $estate = Estate::find($id);
+    $estate->delete();
   }
 }
 
