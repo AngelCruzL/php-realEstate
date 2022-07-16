@@ -50,8 +50,6 @@ class ActiveRecord
       join(', ', $values) .
       " WHERE id = " . self::$db->escape_string($this->id) .
       " LIMIT 1;";
-    // TODO: Fix the query to include the table name.
-    debug($query);
 
     $result = self::$db->query($query);
 
@@ -61,8 +59,6 @@ class ActiveRecord
   public function delete()
   {
     $query = "DELETE FROM " . static::$table . " WHERE id = " . self::$db->escape_string($this->id) . " LIMIT 1;";
-    // TODO: Fix the query to include the table name.
-    debug($query);
     $result = self::$db->query($query);
 
     if ($result) {
@@ -75,7 +71,7 @@ class ActiveRecord
   {
     $data = [];
 
-    foreach (self::$dbColumns as $column) {
+    foreach (static::$dbColumns as $column) {
       if ($column === 'id') continue;
       $data[$column] = $this->$column;
     }
@@ -151,7 +147,7 @@ class ActiveRecord
 
     $array = [];
     while ($row = $result->fetch_assoc()) {
-      $array[] = self::createObject($row);
+      $array[] = static::createObject($row);
     }
 
     $result->free();
