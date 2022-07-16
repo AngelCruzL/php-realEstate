@@ -6,6 +6,6 @@ require __DIR__ . '/../vendor/autoload.php';
 
 $db = dbConnection();
 
-use App\Estate;
+use App\ActiveRecord;
 
-Estate::setDB($db);
+ActiveRecord::setDB($db);

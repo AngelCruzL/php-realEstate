@@ -8,12 +8,11 @@ $id = filter_var($id, FILTER_VALIDATE_INT);
 if (!$id) header('Location: /bienes-raices/admin');
 
 use App\Estate;
+use App\Seller;
 use Intervention\Image\ImageManagerStatic as Image;
 
 $estate = Estate::find($id);
-
-$getSellersQuery = "SELECT * FROM sellers";
-$sellers = mysqli_query($db, $getSellersQuery);
+$sellers = Seller::all();
 
 $errors = Estate::getErrors();
 
@@ -32,7 +31,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   }
 
   if (empty($errors)) {
-    $image->save(IMAGES_DIRECTORY . $imageName);
+    if ($_FILES['estate']['tmp_name']['image']) {
+      $image->save(IMAGES_DIRECTORY . $imageName);
+    }
+
     $estate->save();
   }
 }
