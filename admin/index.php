@@ -8,8 +8,6 @@ use App\Seller;
 $estates = Estate::all();
 $sellers = Seller::all();
 
-// debug($sellers);
-
 $status = $_GET['status'] ?? null;
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -29,17 +27,15 @@ includeTemplate('header');
 <main class="container section">
   <h1>Administrador de bienes raíces</h1>
 
-  <?php if (intval($status) === 1) : ?>
+  <?php if (!is_null($status)) : ?>
     <div class="alert alertSuccess">
-      <p>Anuncio creado correctamente</p>
-    </div>
-  <?php elseif (intval($status) === 2) : ?>
-    <div class="alert alertSuccess">
-      <p>Anuncio actualizado correctamente</p>
-    </div>
-  <?php elseif (intval($status) === 3) : ?>
-    <div class="alert alertSuccess">
-      <p>Anuncio eliminado correctamente</p>
+      <?php if (intval($status) === 1) : ?>
+        <p>Anuncio creado correctamente</p>
+      <?php elseif (intval($status) === 2) : ?>
+        <p>Anuncio actualizado correctamente</p>
+      <?php elseif (intval($status) === 3) : ?>
+        <p>Anuncio eliminado correctamente</p>
+      <?php endif; ?>
     </div>
   <?php endif; ?>
 
