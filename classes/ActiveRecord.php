@@ -5,46 +5,9 @@ namespace App;
 class ActiveRecord
 {
   protected static $db;
-  protected static $dbColumns = [
-    'id',
-    'title',
-    'price',
-    'image',
-    'description',
-    'bedrooms',
-    'bathrooms',
-    'park',
-    'created_at',
-    'seller_id'
-  ];
   protected static $table = '';
-
+  protected static $dbColumns = [];
   protected static $errors = [];
-
-  public $id;
-  public $title;
-  public $price;
-  public $image;
-  public $description;
-  public $bedrooms;
-  public $bathrooms;
-  public $park;
-  public $created_at;
-  public $seller_id;
-
-  public function __construct($args = [])
-  {
-    $this->id = $args['id'] ?? null;
-    $this->title = $args['title'] ?? '';
-    $this->price = $args['price'] ?? '';
-    $this->image = $args['image'] ?? '';
-    $this->description = $args['description'] ?? '';
-    $this->bedrooms = $args['bedrooms'] ?? '';
-    $this->bathrooms = $args['bathrooms'] ?? '';
-    $this->park = $args['park'] ?? '';
-    $this->created_at = date('Y/m/d');
-    $this->seller_id = $args['seller_id'] ?? '1';
-  }
 
   public static function setDB($database)
   {
@@ -206,7 +169,7 @@ class ActiveRecord
 
   protected static function createObject($register)
   {
-    $object = new self;
+    $object = new static;
 
     foreach ($register as $key => $value) {
       if (property_exists($object, $key)) {
