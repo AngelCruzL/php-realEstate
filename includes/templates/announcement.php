@@ -2,8 +2,11 @@
 
 use App\Estate;
 
-$estates = Estate::all();
-// debug($estates);
+if (str_contains($_SERVER['SCRIPT_NAME'], 'announcements.php')) {
+  $estates = Estate::all();
+} else {
+  $estates = Estate::get(3);
+}
 ?>
 
 <div class="adsContainer">

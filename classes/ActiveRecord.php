@@ -128,6 +128,20 @@ class ActiveRecord
   }
 
   /**
+   * This function returns the first records from the table
+   *
+   * @param limitOfRecords The number of records to return.
+   *
+   * @return The result of the query.
+   */
+  public static function get($limitOfRecords)
+  {
+    $query = "SELECT * FROM " . static::$table . " LIMIT " . $limitOfRecords . ";";
+    $result = self::sqlConsult($query);
+    return $result;
+  }
+
+  /**
    * It takes an id, queries the database for the table with that id, and returns the result
    *
    * @param id The id of the register you want to get.
