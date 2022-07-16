@@ -41,6 +41,7 @@ includeTemplate('header');
 
   <a href="/bienes-raices/admin/estate/create.php" class="btnGreen">Nueva Propiedad</a>
 
+  <h2>Propiedades</h2>
   <table class="estates">
     <thead>
       <tr>
@@ -65,6 +66,36 @@ includeTemplate('header');
               <input type="submit" class="btnRed-block w100" value="Eliminar" />
             </form>
             <a class="btnYellow-block" href="/bienes-raices/admin/estate/update.php?id=<?php echo $estate->id; ?>">Actualizar</a>
+          </td>
+        </tr>
+      <?php endforeach; ?>
+    </tbody>
+  </table>
+
+  <h2>Vendedores</h2>
+  <table class="estates">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Teléfono</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <?php foreach ($sellers as $seller) : ?>
+        <tr>
+          <td><?php echo $seller->id; ?></td>
+          <td><?php echo $seller->firstname . ' ' . $seller->lastname; ?></td>
+          <td><?php echo $seller->phone; ?></td>
+          <td>
+            <form method="POST">
+              <input type="hidden" name="id" value="<?php echo $seller->id ?>">
+              <input type="hidden" name="type" value="seller">
+              <input type="submit" class="btnRed-block w100" value="Eliminar" />
+            </form>
+            <a class="btnYellow-block" href="/bienes-raices/admin/seller/update.php?id=<?php echo $estate->id; ?>">Actualizar</a>
           </td>
         </tr>
       <?php endforeach; ?>
