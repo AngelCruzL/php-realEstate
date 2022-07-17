@@ -37,7 +37,7 @@
           <td><img src="./images/<?php echo $estate->image; ?>" class="tableImage" alt="imagen table"></td>
           <td>$<?php echo $estate->price; ?></td>
           <td>
-            <form method="POST">
+            <form method="POST" action="/propiedades/eliminar">
               <input type="hidden" name="id" value="<?php echo $estate->id ?>">
               <input type="hidden" name="type" value="estate">
               <input type="submit" class="btnRed-block w100" value="Eliminar" />

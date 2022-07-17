@@ -63,7 +63,7 @@ class ActiveRecord
 
     if ($result) {
       $this->deleteImage();
-      header('Location: /bienes-raices/admin?status=3');
+      header('Location: /admin?status=3');
     }
   }
 
