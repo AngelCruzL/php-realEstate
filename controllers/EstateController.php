@@ -2,11 +2,13 @@
 
 namespace Controllers;
 
+use MVC\Router;
+
 class EstateController
 {
-  public static function index()
+  public static function index(Router $router)
   {
-    echo 'Index';
+    $router->render('estates/admin');
   }
 
   public static function create()
