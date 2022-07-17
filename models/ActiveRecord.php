@@ -53,7 +53,7 @@ class ActiveRecord
 
     $result = self::$db->query($query);
 
-    if ($result) header('Location: /bienes-raices/admin?status=2');
+    if ($result) header('Location: /admin?status=2');
   }
 
   public function delete()

@@ -42,7 +42,7 @@
               <input type="hidden" name="type" value="estate">
               <input type="submit" class="btnRed-block w100" value="Eliminar" />
             </form>
-            <a class="btnYellow-block" href="/admin/estate/update.php?id=<?php echo $estate->id; ?>">Actualizar</a>
+            <a class="btnYellow-block" href="/propiedades/actualizar?id=<?php echo $estate->id; ?>">Actualizar</a>
           </td>
         </tr>
       <?php endforeach; ?>

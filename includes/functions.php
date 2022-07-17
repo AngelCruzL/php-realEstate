@@ -81,3 +81,20 @@ function showNotification($statusCode)
 
   return $message;
 }
+
+/**
+ * If the id is not valid, redirect to the given url
+ *
+ * @param string url The URL to redirect to if the ID is invalid.
+ *
+ * @return The return value of the function is the return value of the last statement in the function.
+ */
+function validateIdOrRedirect(string $url)
+{
+  $id = $_GET['id'];
+  $id = filter_var($id, FILTER_VALIDATE_INT);
+
+  if (!$id) header("Location: ${url}");
+
+  return $id;
+}

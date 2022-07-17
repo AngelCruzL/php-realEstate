@@ -53,8 +53,40 @@ class EstateController
     ]);
   }
 
-  public static function update()
+  public static function update(Router $router)
   {
-    echo 'Actualizar propiedad';
+    $id = validateIdOrRedirect('/admin');
+
+    $estate = Estate::find($id);
+    $sellers = Seller::all();
+    $errors = Estate::getErrors();
+
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+      $args = $_POST['estate'];
+
+      $estate->sync($args);
+      $errors = $estate->validateData();
+
+      $imageName = md5(uniqid(rand(), true)) . '.jpg';
+
+      if ($_FILES['estate']['tmp_name']['image']) {
+        $image = Image::make($_FILES['estate']['tmp_name']['image'])->fit(800, 600);
+        $estate->setImage($imageName);
+      }
+
+      if (empty($errors)) {
+        if ($_FILES['estate']['tmp_name']['image']) {
+          $image->save(IMAGES_DIRECTORY . $imageName);
+        }
+
+        $estate->save();
+      }
+    }
+
+    $router->render('estates/update', [
+      'estate' => $estate,
+      'sellers' => $sellers,
+      'errors' => $errors,
+    ]);
   }
 }

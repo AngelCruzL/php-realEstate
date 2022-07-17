@@ -1,5 +1,5 @@
 <main class="container section">
-  <h1>Crear Propiedad</h1>
+  <h1>Actualizar Propiedad</h1>
 
   <a href="/admin" class="btnGreen">Volver</a>
 
