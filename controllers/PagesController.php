@@ -17,4 +17,9 @@ class PagesController
       'estates' => $estates,
     ]);
   }
+
+  public static function about(Router $router)
+  {
+    $router->render('pages/about');
+  }
 }
