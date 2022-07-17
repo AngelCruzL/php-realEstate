@@ -12,11 +12,14 @@ class EstateController
   public static function index(Router $router)
   {
     $estates = Estate::all();
+    $sellers = Seller::all();
+
     $status = $_GET['status'] ?? null;
 
     $router->render('estates/admin', [
       'estates' => $estates,
       'status' => $status,
+      'sellers' => $sellers,
     ]);
   }
 
