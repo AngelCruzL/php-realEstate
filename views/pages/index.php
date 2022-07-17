@@ -1,8 +1,3 @@
-<?php
-require 'includes/app.php';
-includeTemplate('header', true);
-?>
-
 <main class="container section">
   <h2>Más sobre Nosotros</h2>
 
@@ -48,8 +43,7 @@ includeTemplate('header', true);
   <h2>Casas y Departamentos en Venta</h2>
 
   <?php
-  $limit = 3;
-  include 'includes/templates/announcement.php';
+  include 'announcement.php';
   ?>
 
   <div class="alignEnd">
@@ -132,7 +126,3 @@ includeTemplate('header', true);
     </div>
   </section>
 </div>
-
-<?php
-includeTemplate('footer');
-?>

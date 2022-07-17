@@ -1,19 +1,8 @@
-<?php
-
-use App\Estate;
-
-if (str_contains($_SERVER['SCRIPT_NAME'], 'announcements.php')) {
-  $estates = Estate::all();
-} else {
-  $estates = Estate::get(3);
-}
-?>
-
 <div class="adsContainer">
   <?php foreach ($estates as $estate) : ?>
     <div class="ad">
 
-      <img loading="lazy" src="/bienes-raices/images/<?php echo $estate->image; ?>" alt="anuncio" />
+      <img loading="lazy" src="/images/<?php echo $estate->image; ?>" alt="anuncio" />
 
       <div class="content">
         <h3><?php echo $estate->title; ?></h3>
