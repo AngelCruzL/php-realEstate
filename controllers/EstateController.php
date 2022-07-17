@@ -3,12 +3,19 @@
 namespace Controllers;
 
 use MVC\Router;
+use Model\Estate;
 
 class EstateController
 {
   public static function index(Router $router)
   {
-    $router->render('estates/admin');
+    $estates = Estate::all();
+    $status = null;
+
+    $router->render('estates/admin', [
+      'estates' => $estates,
+      'status' => $status,
+    ]);
   }
 
   public static function create()
