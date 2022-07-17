@@ -8,7 +8,7 @@
   <h2>Casas y Departamentos en Venta</h2>
 
   <?php
-  include 'announcement.php';
+  include 'estates-list.php';
   ?>
 
   <div class="alignEnd">

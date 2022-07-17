@@ -22,4 +22,23 @@ class PagesController
   {
     $router->render('pages/about');
   }
+
+  public static function announcements(Router $router)
+  {
+    $estates = Estate::all();
+
+    $router->render('pages/announcements', [
+      'estates' => $estates,
+    ]);
+  }
+
+  public static function announcement(Router $router)
+  {
+    $id = validateIdOrRedirect('/anuncios');
+    $estate = Estate::find($id);
+
+    $router->render('pages/announcement', [
+      'estate' => $estate,
+    ]);
+  }
 }

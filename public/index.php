@@ -25,5 +25,7 @@ $router->post('/vendedores/eliminar', [SellerController::class, 'delete']);
 
 $router->get('/', [PagesController::class, 'index']);
 $router->get('/nosotros', [PagesController::class, 'about']);
+$router->get('/anuncios', [PagesController::class, 'announcements']);
+$router->get('/anuncio', [PagesController::class, 'announcement']);
 
 $router->checkRoutes();
