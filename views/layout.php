@@ -27,12 +27,12 @@
 
           <nav class="mainNavigation <?php echo $isIndex ? 'home' : '' ?>">
             <ul>
-              <li><a href="about.php">Nosotros</a></li>
-              <li><a href="announcements.php">Anuncios</a></li>
-              <li><a href="blog.php">Blog</a></li>
-              <li><a href="contact.php">Contacto</a></li>
+              <li><a href="/nosotros">Nosotros</a></li>
+              <li><a href="/anuncios">Anuncios</a></li>
+              <li><a href="/blog">Blog</a></li>
+              <li><a href="/contacto">Contacto</a></li>
               <?php if ($isAuth) : ?>
-                <li><a href="logout.php">Cerrar Sesión</a></li>
+                <li><a href="cerrar-sesion">Cerrar Sesión</a></li>
               <?php endif; ?>
             </ul>
           </nav>
@@ -53,10 +53,10 @@
     <div class="container footerContainer">
       <nav class="mainNavigation">
         <ul>
-          <li><a href="about.php">Nosotros</a></li>
-          <li><a href="announcements.php">Anuncios</a></li>
-          <li><a href="blog.php">Blog</a></li>
-          <li><a href="contact.php">Contacto</a></li>
+          <li><a href="/nosotros">Nosotros</a></li>
+          <li><a href="/anuncios">Anuncios</a></li>
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="/contacto">Contacto</a></li>
         </ul>
       </nav>
     </div>
