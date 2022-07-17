@@ -51,4 +51,23 @@ class SellerController
       'errors' => $errors,
     ]);
   }
+
+  public static function delete()
+  {
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+      $id = $_POST['id'];
+      $id = filter_var($id, FILTER_VALIDATE_INT);
+
+      if ($id) {
+        $content_type = $_POST['type'];
+
+        if (validateContentType($content_type)) {
+          if ($content_type === 'seller') {
+            $seller = Seller::find($id);
+            $seller->delete();
+          }
+        }
+      }
+    }
+  }
 }

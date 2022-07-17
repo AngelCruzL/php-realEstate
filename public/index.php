@@ -20,5 +20,6 @@ $router->get('/vendedores/crear', [SellerController::class, 'create']);
 $router->post('/vendedores/crear', [SellerController::class, 'create']);
 $router->get('/vendedores/actualizar', [SellerController::class, 'update']);
 $router->post('/vendedores/actualizar', [SellerController::class, 'update']);
+$router->post('/vendedores/eliminar', [SellerController::class, 'delete']);
 
 $router->checkRoutes();

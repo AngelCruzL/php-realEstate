@@ -67,7 +67,7 @@
           <td><?php echo $seller->firstname . ' ' . $seller->lastname; ?></td>
           <td><?php echo $seller->phone; ?></td>
           <td>
-            <form method="POST">
+            <form method="POST" action="/vendedores/eliminar">
               <input type="hidden" name="id" value="<?php echo $seller->id ?>">
               <input type="hidden" name="type" value="seller">
               <input type="submit" class="btnRed-block w100" value="Eliminar" />
