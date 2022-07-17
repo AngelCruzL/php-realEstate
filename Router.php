@@ -12,6 +12,11 @@ class Router
     $this->routesGet[$url] = $controller;
   }
 
+  public function post($url, $controller)
+  {
+    $this->routesPost[$url] = $controller;
+  }
+
   public function checkRoutes()
   {
     $currentUrl = $_SERVER['PATH_INFO'] ?? '/';
@@ -19,12 +24,14 @@ class Router
 
     if ($httpMethod === 'GET') {
       $controller = $this->routesGet[$currentUrl] ?? null;
+    } else {
+      $controller = $this->routesPost[$currentUrl] ?? null;
+    }
 
-      if ($controller) {
-        call_user_func($controller, $this);
-      } else {
-        echo '404 - Page not found';
-      }
+    if ($controller) {
+      call_user_func($controller, $this);
+    } else {
+      echo '404 - Page not found';
     }
   }
 

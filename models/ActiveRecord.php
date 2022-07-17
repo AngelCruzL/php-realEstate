@@ -34,7 +34,7 @@ class ActiveRecord
       "' );";
 
     $result = self::$db->query($query);
-    if ($result) header('Location: /bienes-raices/admin?status=1');
+    if ($result) header('Location: /admin?status=1');
   }
 
   private function update()
