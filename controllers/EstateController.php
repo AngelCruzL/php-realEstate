@@ -4,6 +4,7 @@ namespace Controllers;
 
 use MVC\Router;
 use Model\Estate;
+use Model\Seller;
 
 class EstateController
 {
@@ -18,9 +19,15 @@ class EstateController
     ]);
   }
 
-  public static function create()
+  public static function create(Router $router)
   {
-    echo 'Crear propiedad';
+    $estate = new Estate;
+    $sellers = Seller::all();
+
+    $router->render('estates/create', [
+      'estate' => $estate,
+      'sellers' => $sellers,
+    ]);
   }
 
   public static function update()
