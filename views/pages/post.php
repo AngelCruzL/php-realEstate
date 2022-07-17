@@ -1,8 +1,3 @@
-<?php
-require 'includes/app.php';
-includeTemplate('header');
-?>
-
 <main class="section container centerContent">
   <h1>Guía para la decoración de tu hogar</h1>
 
@@ -35,7 +30,3 @@ includeTemplate('header');
     </p>
   </div>
 </main>
-
-<?php
-includeTemplate('footer');
-?>

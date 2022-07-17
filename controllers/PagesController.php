@@ -41,4 +41,14 @@ class PagesController
       'estate' => $estate,
     ]);
   }
+
+  public static function blog(Router $router)
+  {
+    $router->render('pages/blog');
+  }
+
+  public static function post(Router $router)
+  {
+    $router->render('pages/post');
+  }
 }

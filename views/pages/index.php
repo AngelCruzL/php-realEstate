@@ -39,7 +39,7 @@
       </div>
 
       <div class="postText">
-        <a href="post.php">
+        <a href="/post">
           <h4>Terraza en el techo de tu casa</h4>
           <p class="metadata">
             Escrito el: <span>15/07/2022</span> por: <span>Admin</span>
@@ -63,7 +63,7 @@
       </div>
 
       <div class="postText">
-        <a href="post.php">
+        <a href="/post">
           <h4>Guía para la decoración de tu hogar</h4>
           <p class="metadata">
             Escrito el: <span>15/07/2022</span> por: <span>Admin</span>
