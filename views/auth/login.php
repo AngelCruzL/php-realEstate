@@ -1,30 +1,3 @@
-<?php
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-  if (empty($errors)) {
-    $query = "SELECT * FROM users WHERE email = '${email}';";
-    $result = mysqli_query($db, $query);
-
-    if ($result->num_rows) {
-      $user = mysqli_fetch_assoc($result);
-      $auth = password_verify($password, $user['password']);
-
-      if ($auth) {
-        session_start();
-        $_SESSION['user'] = $user;
-        $_SESSION['logged'] = true;
-        header('Location: /bienes-raices/admin');
-      } else {
-        $errors[] = 'La contraseña es incorrecta';
-      }
-    } else {
-      $errors[] = 'El usuario no existe';
-    }
-  }
-}
-?>
-
 <main class="section container centerContent">
   <h1>Iniciar Sesión</h1>
 
