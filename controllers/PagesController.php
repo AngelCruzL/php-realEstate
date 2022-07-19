@@ -56,6 +56,9 @@ class PagesController
   public static function contact(Router $router)
   {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+      $contactFormData = $_POST['contact'];
+      // debug($contactFormData);
+
       $email = new PHPMailer();
       $email->isSMTP();
       $email->Host = 'smtp.mailtrap.io';
@@ -70,10 +73,18 @@ class PagesController
       $email->isHTML(true);
       $email->CharSet = 'UTF-8';
 
-      $email->Body = '<h1>Contacto desde bienesraices.com</h1>
-        <p>Nombre: ' . $_POST['name'] . '</p>
-        <p>Email: ' . $_POST['email'] . '</p>
-        <p>Mensaje: ' . $_POST['message'] . '</p>';
+      $email->Body = '<html>
+        <h1>Contacto desde bienesraices.com</h1>
+        <p>Nombre: ' . $contactFormData['name'] . '</p>
+        <p>Email: ' . $contactFormData['email'] . '</p>
+        <p>Teléfono: ' . $contactFormData['phoneNumber'] . '</p>
+        <p>Mensaje: ' . $contactFormData['message'] . '</p>
+        <p>Vende o compra: ' . $contactFormData['options'] . '</p>
+        <p>Presupuesto: ' . $contactFormData['budget'] . '</p>
+        <p>Método preferido de contacto: ' . $contactFormData['contact'] . '</p>
+        <p>Fecha de contacto: ' . $contactFormData['date'] . '</p>
+        <p>Hora de contacto: ' . $contactFormData['hour'] . '</p>
+      </html>';
       if ($email->send()) {
         echo 'mensaje enviado';
       } else {
