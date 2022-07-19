@@ -1,10 +1,15 @@
 <main class="container section centerContent">
   <h1>Contacto</h1>
+  <?php if ($message) { ?>
+    <div class="alert alertSuccess">
+      <p><?php echo s($message) ?></p>
+    </div>
+  <?php } ?>
 
   <picture>
     <source srcset="build/img/destacada3.webp" type="image/webp" />
     <source srcset="build/img/destacada3.jpg" type="image/jpeg" />
-    <img loading="lazy" src="build/img/destacada3.jpg" alt="Imagen Contacto" />
+    <img loading="lazy" src="build/img/destacada3.jpg" alt="Imagen Contacto" class="mt-2" />
   </picture>
 
   <h2>Llene el formulario de contacto</h2>

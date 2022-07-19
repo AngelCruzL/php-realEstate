@@ -55,9 +55,10 @@ class PagesController
 
   public static function contact(Router $router)
   {
+    $message = null;
+
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $contactFormData = $_POST['contact'];
-      // debug($contactFormData);
 
       $email = new PHPMailer();
       $email->isSMTP();
@@ -73,25 +74,36 @@ class PagesController
       $email->isHTML(true);
       $email->CharSet = 'UTF-8';
 
-      $email->Body = '<html>
+      $emailContent = '<html>
         <h1>Contacto desde bienesraices.com</h1>
         <p>Nombre: ' . $contactFormData['name'] . '</p>
-        <p>Email: ' . $contactFormData['email'] . '</p>
-        <p>Teléfono: ' . $contactFormData['phoneNumber'] . '</p>
         <p>Mensaje: ' . $contactFormData['message'] . '</p>
         <p>Vende o compra: ' . $contactFormData['options'] . '</p>
-        <p>Presupuesto: ' . $contactFormData['budget'] . '</p>
-        <p>Método preferido de contacto: ' . $contactFormData['contact'] . '</p>
-        <p>Fecha de contacto: ' . $contactFormData['date'] . '</p>
-        <p>Hora de contacto: ' . $contactFormData['hour'] . '</p>
-      </html>';
-      if ($email->send()) {
-        echo 'mensaje enviado';
+        <p>Presupuesto: ' . $contactFormData['budget'] . '</p>';
+
+      if ($contactFormData['contact'] === 'phone') {
+        $emailContent .= '<p>El usuario eligió contactar por teléfono</p>
+          <p>Teléfono: ' . $contactFormData['phoneNumber'] . '</p>
+          <p>Fecha de contacto: ' . $contactFormData['date'] . '</p>
+          <p>Hora de contacto: ' . $contactFormData['hour'] . '</p>
+          </html>';
       } else {
-        echo 'error al enviar el mensaje';
+        $emailContent .= '<p>El usuario eligió contactar por correo</p>
+          <p>Email: ' . $contactFormData['email'] . '</p>
+          </html>';
+      }
+
+      $email->Body = $emailContent;
+
+      if ($email->send()) {
+        $message = 'Mensaje enviado correctamente';
+      } else {
+        $message = 'Error al enviar el mensaje';
       }
     }
 
-    $router->render('pages/contact', []);
+    $router->render('pages/contact', [
+      'message' => $message,
+    ]);
   }
 }
