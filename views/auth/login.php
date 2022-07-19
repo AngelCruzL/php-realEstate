@@ -1,4 +1,4 @@
-<main class="section container centerContent">
+<main class="container section centerContent">
   <h1>Iniciar Sesión</h1>
 
   <?php foreach ($errors as $error) : ?>

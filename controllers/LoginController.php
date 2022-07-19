@@ -16,6 +16,15 @@ class LoginController
       $errors = $auth->validateData();
 
       if (empty($errors)) {
+        $result = $auth->userExists();
+
+        if (!$result) {
+          $errors = Admin::getErrors();
+        } else {
+          $isAuth = $auth->checkPassword($result);
+
+          if (!$isAuth) $errors = Admin::getErrors();
+        }
       }
     }
 
