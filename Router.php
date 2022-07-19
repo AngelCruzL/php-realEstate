@@ -19,13 +19,30 @@ class Router
 
   public function checkRoutes()
   {
+    session_start();
+    $isAuth = $_SESSION['logged'] ?? false;
+
     $currentUrl = $_SERVER['PATH_INFO'] ?? '/';
     $httpMethod = $_SERVER['REQUEST_METHOD'];
+    $protectedRoutes = [
+      '/admin',
+      '/propiedades/crear',
+      '/propiedades/actualizar',
+      '/propiedades/eliminar',
+      '/vendedores/crear',
+      '/vendedores/actualizar',
+      '/vendedores/eliminar'
+    ];
 
     if ($httpMethod === 'GET') {
       $controller = $this->routesGet[$currentUrl] ?? null;
     } else {
       $controller = $this->routesPost[$currentUrl] ?? null;
+    }
+
+    if (!$isAuth && in_array($currentUrl, $protectedRoutes)) {
+      header('Location: /');
+      return;
     }
 
     if ($controller) {
