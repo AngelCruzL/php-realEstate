@@ -51,4 +51,13 @@ class PagesController
   {
     $router->render('pages/post');
   }
+
+  public static function contact(Router $router)
+  {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+      debug($_POST);
+    }
+
+    $router->render('pages/contact', []);
+  }
 }

@@ -29,5 +29,7 @@ $router->get('/anuncios', [PagesController::class, 'announcements']);
 $router->get('/anuncio', [PagesController::class, 'announcement']);
 $router->get('/blog', [PagesController::class, 'blog']);
 $router->get('/post', [PagesController::class, 'post']);
+$router->get('/contacto', [PagesController::class, 'contact']);
+$router->post('/contacto', [PagesController::class, 'contact']);
 
 $router->checkRoutes();
