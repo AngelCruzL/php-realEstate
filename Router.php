@@ -45,6 +45,7 @@ class Router
     include __DIR__ . '/views/' . $view . '.php';
 
     $content = ob_get_clean();
+    $isAuth = $_SESSION['logged'] ?? false;
     include __DIR__ . '/views/layout.php';
   }
 }

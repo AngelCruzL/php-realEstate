@@ -14,7 +14,7 @@
   <header class="header <?php echo $isIndex ? 'mainHeader' : '' ?>">
     <div class="container headerContent">
       <div class="navbar <?php echo $isIndex ? 'home' : '' ?>">
-        <a href="index.php">
+        <a href="/">
           <img src="../build/img/logo.svg" alt="Bienes Raíces logo" />
         </a>
 
@@ -32,7 +32,7 @@
               <li><a href="/blog">Blog</a></li>
               <li><a href="/contacto">Contacto</a></li>
               <?php if ($isAuth) : ?>
-                <li><a href="cerrar-sesion">Cerrar Sesión</a></li>
+                <li><a href="logout">Cerrar Sesión</a></li>
               <?php endif; ?>
             </ul>
           </nav>
@@ -40,9 +40,8 @@
       </div>
 
       <?php
-      echo $isIndex
-        ? '<h1>Venta de Casas y Departamentos Exclusivos de Lujo</h1>'
-        : ''
+      if (isset($isIndex))
+        echo '<h1>Venta de Casas y Departamentos Exclusivos de Lujo</h1>'
       ?>
     </div>
   </header>

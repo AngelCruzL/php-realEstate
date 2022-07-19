@@ -35,6 +35,6 @@ $router->post('/contacto', [PagesController::class, 'contact']);
 
 $router->get('/login', [LoginController::class, 'login']);
 $router->post('/login', [LoginController::class, 'login']);
-$router->get('/cerrar-sesion', [LoginController::class, 'logout']);
+$router->get('/logout', [LoginController::class, 'logout']);
 
 $router->checkRoutes();
