@@ -1,15 +1,6 @@
 <?php
-require 'includes/app.php';
-$db = dbConnection();
-
-$errors = [];
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-  $email = mysqli_real_escape_string($db, filter_var($_POST['email']));
-  $password = mysqli_real_escape_string($db, $_POST['password']);
-
-  if (empty($email)) $errors[] = 'El correo es obligatorio o no es válido';
-  if (empty($password)) $errors[] = 'La contraseña es obligatoria';
 
   if (empty($errors)) {
     $query = "SELECT * FROM users WHERE email = '${email}';";
@@ -32,8 +23,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
   }
 }
-
-includeTemplate('header');
 ?>
 
 <main class="section container centerContent">
@@ -59,7 +48,3 @@ includeTemplate('header');
     <input type="submit" value="Iniciar Sesión" class="btnGreen" aria-label="Iniciar Sesión" />
   </form>
 </main>
-
-<?php
-includeTemplate('footer');
-?>
