@@ -1,5 +1,5 @@
-<main class="container section">
-  <h2>Más sobre Nosotros</h2>
+<main aria-labelledby="aboutUs-title" class="container section">
+  <h2 id="aboutUs-title" data-cy="aboutUs-title">Más sobre Nosotros</h2>
 
   <?php include 'icons.php'; ?>
 </main>

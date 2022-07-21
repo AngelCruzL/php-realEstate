@@ -1,4 +1,4 @@
-<div class="aboutUs-icons">
+<div data-cy="aboutUs-icons" class="aboutUs-icons">
   <div class="icon">
     <img src="build/img/icono1.svg" alt="Icono seguridad" loading="lazy" />
 

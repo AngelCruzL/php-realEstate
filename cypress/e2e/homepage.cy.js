@@ -12,4 +12,17 @@ describe('Testing on Real Estate homepage', () => {
       .invoke('text')
       .should('not.equal', 'Real Estate');
   });
+
+  it('Test the about us section', () => {
+    cy.get('[data-cy="aboutUs-title"]').should('exist');
+    cy.get('[data-cy="aboutUs-title"]')
+      .should('have.prop', 'tagName')
+      .should('equal', 'H2');
+
+    cy.get('[data-cy="aboutUs-icons"]').should('exist');
+    cy.get('[data-cy="aboutUs-icons"]').find('.icon').should('have.length', 3);
+    cy.get('[data-cy="aboutUs-icons"]')
+      .find('.icon')
+      .should('not.have.length', 4);
+  });
 });
