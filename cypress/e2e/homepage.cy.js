@@ -44,4 +44,19 @@ describe('Testing on Real Estate homepage', () => {
     cy.wait(1000);
     cy.go('back');
   });
+
+  it('Test the routing between estates announcements', () => {
+    cy.get('[data-cy="viewAllAds"]').should('exist');
+    cy.get('[data-cy="viewAllAds"]').should('have.class', 'btnGreen');
+    cy.get('[data-cy="viewAllAds"]')
+      .invoke('attr', 'href')
+      .should('equal', '/anuncios');
+    cy.get('[data-cy="viewAllAds"]').click();
+    cy.url().should('include', '/anuncios');
+    cy.get('[data-cy="adListHeading"]')
+      .invoke('text')
+      .should('equal', 'Casas y Departamentos en Venta');
+    cy.wait(1000);
+    cy.go('back');
+  });
 });

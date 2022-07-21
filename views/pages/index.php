@@ -12,7 +12,7 @@
   ?>
 
   <div class="alignEnd">
-    <a class="btnGreen" href="/anuncios">Ver todas</a>
+    <a data-cy="viewAllAds" class="btnGreen" href="/anuncios">Ver todas</a>
   </div>
 </section>
 
