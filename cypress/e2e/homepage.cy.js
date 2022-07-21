@@ -25,4 +25,23 @@ describe('Testing on Real Estate homepage', () => {
       .find('.icon')
       .should('not.have.length', 4);
   });
+
+  it('Test the card structure for the properties announcements', () => {
+    cy.get('[data-cy="adCard"]').should('have.length', 3);
+    cy.get('[data-cy="adCard"]').should('not.have.length', 1);
+    cy.get('[data-cy="adCard"]').should('not.have.length', 5);
+
+    cy.get('[data-cy="adInfoLink"]').should('have.class', 'btnYellow-block');
+    cy.get('[data-cy="adInfoLink"]').should('not.have.class', 'btnYellow');
+    cy.get('[data-cy="adInfoLink"]')
+      .first()
+      .invoke('text')
+      .should('equal', 'Ver propiedad');
+    cy.get('[data-cy="adInfoLink"]').first().click();
+    cy.url().should('include', '/anuncio');
+    cy.get('[data-cy="estateTitle"]').should('exist');
+
+    cy.wait(1000);
+    cy.go('back');
+  });
 });

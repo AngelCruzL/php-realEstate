@@ -1,6 +1,6 @@
 <div class="adsContainer">
   <?php foreach ($estates as $estate) : ?>
-    <div class="ad">
+    <div data-cy="adCard" class="ad">
 
       <img loading="lazy" src="/images/<?php echo $estate->image; ?>" alt="anuncio" />
 
@@ -26,9 +26,7 @@
           </li>
         </ul>
 
-        <a class="btnYellow-block" href="/anuncio?id=<?php echo $estate->id; ?>">
-          Ver propiedad
-        </a>
+        <a data-cy="adInfoLink" class="btnYellow-block" href="/anuncio?id=<?php echo $estate->id; ?>">Ver propiedad</a>
       </div>
     </div>
   <?php endforeach; ?>

@@ -1,5 +1,5 @@
 <main class="section container centerContent">
-  <h1><?php echo $estate->title; ?></h1>
+  <h1 data-cy="estateTitle"><?php echo $estate->title; ?></h1>
 
   <img loading="lazy" src="/images/<?php echo $estate->image; ?>" alt="anuncio" />
 
