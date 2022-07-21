@@ -85,4 +85,27 @@ describe('Testing on Real Estate homepage', () => {
     cy.wait(450);
     cy.visit('/');
   });
+
+  it('Test on blog and testimonials', () => {
+    cy.get('[data-cy="blog"]').should('exist');
+    cy.get('[data-cy="blog"]')
+      .find('H3')
+      .invoke('text')
+      .should('equal', 'Nuestro Blog');
+    cy.get('[data-cy="blog"]')
+      .find('H3')
+      .invoke('text')
+      .should('not.equal', 'Blog');
+    cy.get('[data-cy="blog"]').find('img').should('have.length', 2);
+
+    cy.get('[data-cy="testimonials"]').should('exist');
+    cy.get('[data-cy="testimonials"]')
+      .find('H3')
+      .invoke('text')
+      .should('equal', 'Testimoniales');
+    cy.get('[data-cy="testimonials"]')
+      .find('H3')
+      .invoke('text')
+      .should('not.equal', 'Testimonios');
+  });
 });

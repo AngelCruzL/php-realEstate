@@ -23,8 +23,8 @@
 </section>
 
 <div class="container section sectionBlog">
-  <section class="blog">
-    <h3>Nuestro Blog</h3>
+  <section data-cy="blog" aria-labelledby="blog-title" class="blog">
+    <h3 id="blog-title">Nuestro Blog</h3>
 
     <article class="blogPost">
       <div class="image">
@@ -75,8 +75,8 @@
     </article>
   </section>
 
-  <section class="testimonials">
-    <h3>Testimoniales</h3>
+  <section data-cy="testimonials" aria-labelledby="testimonials-title" class="testimonials">
+    <h3 id="testimonials-title">Testimoniales</h3>
 
     <div class="testimonial">
       <blockquote>
