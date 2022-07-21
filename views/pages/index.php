@@ -16,13 +16,10 @@
   </div>
 </section>
 
-<section class="contactImage">
+<section data-cy="contactImage" class="contactImage">
   <h2>Encuentra la casa de tus sueños</h2>
-  <p class="container">
-    Llena el formulario de contacto y un asesor se pondrá en contacto
-    contigo a la brevedad
-  </p>
-  <a href="contact.php" class="btnYellow">Contáctenos</a>
+  <p class="container">Llena el formulario de contacto y un asesor se pondrá en contacto contigo a la brevedad</p>
+  <a href="/contacto" class="btnYellow">Contáctenos</a>
 </section>
 
 <div class="container section sectionBlog">

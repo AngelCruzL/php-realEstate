@@ -41,7 +41,7 @@ describe('Testing on Real Estate homepage', () => {
     cy.url().should('include', '/anuncio');
     cy.get('[data-cy="estateTitle"]').should('exist');
 
-    cy.wait(1000);
+    cy.wait(450);
     cy.go('back');
   });
 
@@ -56,7 +56,33 @@ describe('Testing on Real Estate homepage', () => {
     cy.get('[data-cy="adListHeading"]')
       .invoke('text')
       .should('equal', 'Casas y Departamentos en Venta');
-    cy.wait(1000);
+    cy.wait(450);
     cy.go('back');
+  });
+
+  it('Test the contact image block on home page', () => {
+    cy.get('[data-cy="contactImage"]').should('exist');
+    cy.get('[data-cy="contactImage"]')
+      .find('H2')
+      .invoke('text')
+      .should('equal', 'Encuentra la casa de tus sueños');
+
+    cy.get('[data-cy="contactImage"]')
+      .find('p')
+      .invoke('text')
+      .should(
+        'equal',
+        'Llena el formulario de contacto y un asesor se pondrá en contacto contigo a la brevedad'
+      );
+
+    cy.get('[data-cy="contactImage"]')
+      .find('a')
+      .invoke('attr', 'href')
+      .then(href => {
+        cy.visit(href);
+      });
+    cy.get('[data-cy="contactHeading"]').should('exist');
+    cy.wait(450);
+    cy.visit('/');
   });
 });

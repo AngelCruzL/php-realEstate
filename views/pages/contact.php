@@ -1,5 +1,5 @@
 <main class="container section centerContent">
-  <h1>Contacto</h1>
+  <h1 data-cy="contactHeading">Contacto</h1>
   <?php if ($message) { ?>
     <div class="alert alertSuccess">
       <p><?php echo s($message) ?></p>
