@@ -1,7 +1,7 @@
 <main class="container section centerContent">
   <h1 data-cy="contactHeading">Contacto</h1>
   <?php if ($message) { ?>
-    <div class="alert alertSuccess">
+    <div data-cy="formSubmitAlert" class="alert alertSuccess">
       <p><?php echo s($message) ?></p>
     </div>
   <?php } ?>
@@ -14,7 +14,7 @@
 
   <h2 data-cy="formHeading">Llene el Formulario de Contacto</h2>
 
-  <form class="form" method="POST">
+  <form data-cy="contactForm" class="form" method="POST">
     <fieldset>
       <legend>Información Personal</legend>
 
