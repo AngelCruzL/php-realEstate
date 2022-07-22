@@ -25,7 +25,7 @@
         <div class="navigationContainer">
           <img src="../build/img/dark-mode.svg" alt="" class="darkMode-btn" />
 
-          <nav class="mainNavigation <?php echo $isIndex ? 'home' : '' ?>">
+          <nav data-cy="navigationHeader" class="mainNavigation <?php echo $isIndex ? 'home' : '' ?>">
             <ul>
               <li><a href="/nosotros">Nosotros</a></li>
               <li><a href="/anuncios">Anuncios</a></li>
@@ -50,7 +50,7 @@
 
   <footer class="footer section">
     <div class="container footerContainer">
-      <nav class="mainNavigation">
+      <nav data-cy="navigationFooter" class="mainNavigation">
         <ul>
           <li><a href="/nosotros">Nosotros</a></li>
           <li><a href="/anuncios">Anuncios</a></li>
@@ -60,7 +60,7 @@
       </nav>
     </div>
 
-    <p class="copyright">Todos los derechos reservados <?php echo date('Y') ?> &copy;</p>
+    <p data-cy="copyright" class="copyright">Todos los derechos reservados <?php echo date('Y') ?> &copy;</p>
   </footer>
 </body>
 
