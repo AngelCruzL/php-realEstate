@@ -62,13 +62,13 @@ class PagesController
 
       $email = new PHPMailer();
       $email->isSMTP();
-      $email->Host = 'smtp.mailtrap.io';
-      $email->SMTPAuth = true;
-      $email->Port = 2525;
-      $email->Username = '9c9c0dc21affa6';
-      $email->Password = '9d1afd8104cbca';
+      $email->Host = $_ENV['EMAIL_HOST'];
+      $email->SMTPAuth = $_ENV['EMAIL_SMTPAUTH'];
+      $email->Port = $_ENV['EMAIL_PORT'];
+      $email->Username = $_ENV['EMAIL_USERNAME'];
+      $email->Password = $_ENV['EMAIL_PASSWORD'];
 
-      $email->setFrom('admin@bienesraices.com');
+      $email->setFrom($_ENV['EMAIL_FROM_ADDRESS']);
       $email->addAddress('admin@bienesraices.com', 'bienesraices.com');
       $email->Subject = 'Contacto desde bienesraices.com';
       $email->isHTML(true);
