@@ -23,9 +23,11 @@ class LoginController
         } else {
           $isAuth = $auth->checkPassword($result);
 
-          if (!$isAuth) $errors = Admin::getErrors();
-
-          $auth->login();
+          if (!$isAuth) {
+            $errors = Admin::getErrors();
+          } else {
+            $auth->login();
+          }
         }
       }
     }

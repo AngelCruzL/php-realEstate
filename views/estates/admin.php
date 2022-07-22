@@ -1,5 +1,5 @@
 <main class="container section">
-  <h1>Administrador de bienes raíces</h1>
+  <h1 data-cy="adminHeading">Administrador de bienes raíces</h1>
 
   <?php
   if ($status) {
