@@ -12,7 +12,7 @@
     <img loading="lazy" src="build/img/destacada3.jpg" alt="Imagen Contacto" class="mt-2" />
   </picture>
 
-  <h2>Llene el formulario de contacto</h2>
+  <h2 data-cy="formHeading">Llene el Formulario de Contacto</h2>
 
   <form class="form" method="POST">
     <fieldset>
