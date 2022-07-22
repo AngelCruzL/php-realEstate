@@ -19,17 +19,17 @@
       <legend>Información Personal</legend>
 
       <label for="name">Nombre</label>
-      <input type="text" name="contact[name]" id="name" placeholder="Tu nombre" required />
+      <input data-cy="inputName" type="text" name="contact[name]" id="name" placeholder="Tu nombre" required />
 
       <label for="message">Mensaje</label>
-      <textarea name="contact[message]" id="message" required></textarea>
+      <textarea data-cy="inputMessage" name="contact[message]" id="message" required></textarea>
     </fieldset>
 
     <fieldset>
       <legend>Información sobre la propiedad</legend>
 
       <label for="options">Vende o compra:</label>
-      <select name="contact[options]" id="options" required>
+      <select data-cy="inputOptions" name="contact[options]" id="options" required>
         <option value="" disabled selected>
           -- Seleccione una opción --
         </option>
@@ -38,7 +38,7 @@
       </select>
 
       <label for="budget">Presupuesto</label>
-      <input type="number" name="contact[budget]" id="budget" required />
+      <input data-cy="inputBudget" type="number" name="contact[budget]" id="budget" required />
     </fieldset>
 
     <fieldset>
@@ -48,10 +48,10 @@
 
       <div class="contactMean">
         <label for="contactPhone">Teléfono</label>
-        <input type="radio" name="contact[contact]" value="phone" id="contactPhone" required />
+        <input data-cy="checkContact" type="radio" name="contact[contact]" value="phone" id="contactPhone" required />
 
         <label for="contactEmail">Correo Electrónico</label>
-        <input type="radio" name="contact[contact]" value="email" id="contactEmail" required />
+        <input data-cy="checkContact" type="radio" name="contact[contact]" value="email" id="contactEmail" required />
       </div>
 
       <div id="contactContainer" class="mt-2"></div>

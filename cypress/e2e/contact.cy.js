@@ -19,4 +19,21 @@ describe('Test on contact page', () => {
       .invoke('text')
       .should('not.equal', 'Ponte en contacto');
   });
+
+  it('should fill the form inputs', () => {
+    cy.get('[data-cy="inputName"]').type('Luis Lara');
+    cy.get('[data-cy="inputMessage"]').type('Deseo comprar una casa');
+    cy.get('[data-cy="inputOptions"]').select('Comprar');
+    cy.get('[data-cy="inputBudget"]').type(1200000);
+    cy.get('[data-cy="checkContact"]').eq(0).check();
+    cy.get('[data-cy="inputPhone"]').should('exist');
+    cy.get('[data-cy="inputPhone"]').type('521468354');
+    cy.get('[data-cy="inputDate"]').type('2022-01-10');
+    cy.get('[data-cy="inputHour"]').type('09:00');
+    cy.wait(1000);
+
+    cy.get('[data-cy="checkContact"]').eq(1).check();
+    cy.get('[data-cy="inputEmail"]').should('exist');
+    cy.get('[data-cy="inputEmail"]').type('email@test.com');
+  });
 });
