@@ -4,7 +4,8 @@
   "description": "Curso Desarrollo Web Completo",
   "main": "gulpfile.js",
   "scripts": {
-    "dev": "gulp"
+    "dev": "gulp",
+    "test": "./node_modules/.bin/cypress open"
   },
   "author": "Juan De La Torre",
   "license": "ISC",

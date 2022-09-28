@@ -12,6 +12,6 @@
   <form class="form" method="POST" enctype="multipart/form-data">
     <?php include __DIR__ . '/form.php' ?>
 
-    <input type="submit" class="btnGreen" value="Crear propiedad">
+    <input type="submit" class="btnGreen" value="Actualizar propiedad">
   </form>
 </main>
