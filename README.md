@@ -69,10 +69,7 @@ php -S localhost:3000
 
 By default this will to run the project on the port 3000, but you can change it in the same command.
 
-<figure>
-  <img src="./img/landing-screen.png" alt="Landing Page" width="550">
-  <figcaption>Landing Page</figcaption>
-</figure>
+![Landing Page](./img/landing-screen.png)
 
 To access the admin panel you need to go to the `/login` route, and use the next credentials:
 
@@ -81,10 +78,7 @@ To access the admin panel you need to go to the `/login` route, and use the next
 
 After that you can access the admin panel and add, edit and delete properties.
 
-<figure>
-  <img src="./img/admin-screen.png" alt="Admin Panel" width="550">
-  <figcaption>Admin Panel</figcaption>
-</figure>
+![Admin Panel](./img/admin-screen.png)
 
 Now it's your turn to create your estates!
 
@@ -100,10 +94,7 @@ yarn test
 
 This will open an cypress window, where you can select your preferred browser to run the tests. Then you can see the next screen to select the test(s) to run:
 
-<figure>
-  <img src="./img/test-screen.png" alt="Tests Screen" width="550">
-  <figcaption>Tests Screen</figcaption>
-</figure>
+![Tests Screen](./img/test-screen.png)
 
 ## License
 
