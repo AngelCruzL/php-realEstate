@@ -12,7 +12,7 @@ class SellerController
     $seller = new Seller;
     $errors = Seller::getErrors();
 
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $seller = new Seller($_POST['seller']);
 
       $errors = $seller->validateData();
@@ -35,7 +35,7 @@ class SellerController
     $seller = Seller::find($id);
     $errors = Seller::getErrors();
 
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $args = $_POST['seller'];
 
       $seller->sync($args);
@@ -54,7 +54,7 @@ class SellerController
 
   public static function delete()
   {
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $id = $_POST['id'];
       $id = filter_var($id, FILTER_VALIDATE_INT);
 

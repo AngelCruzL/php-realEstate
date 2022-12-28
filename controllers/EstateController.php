@@ -29,7 +29,7 @@ class EstateController
     $sellers = Seller::all();
     $errors = Estate::getErrors();
 
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $estate = new Estate($_POST['estate']);
 
       $imageName = md5(uniqid(rand(), true)) . '.jpg';
@@ -64,7 +64,7 @@ class EstateController
     $sellers = Seller::all();
     $errors = Estate::getErrors();
 
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $args = $_POST['estate'];
 
       $estate->sync($args);
@@ -95,7 +95,7 @@ class EstateController
 
   public static function delete()
   {
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $id = $_POST['id'];
       $id = filter_var($id, FILTER_VALIDATE_INT);
 

@@ -11,7 +11,7 @@ class LoginController
   {
     $errors = [];
 
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $auth = new Admin($_POST);
       $errors = $auth->validateData();
 
