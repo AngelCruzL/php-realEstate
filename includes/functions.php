@@ -2,12 +2,8 @@
 
 define('TEMPLATES_URL', __DIR__ . './templates');
 define('FUNCTIONS_URL', __DIR__ . 'functions.php');
+define('IMAGES_DIRECTORY', $_SERVER['DOCUMENT_ROOT'] . '/public/images/');
 
-if (isset($_SERVER['PATH_INFO'])) {
-  define('IMAGES_DIRECTORY', $_SERVER['DOCUMENT_ROOT'] . '/images/');
-} else {
-  define('IMAGES_DIRECTORY', $_SERVER['DOCUMENT_ROOT'] . '/public/images/');
-}
 
 function includeTemplate(string $name, bool $isIndex = false): void
 {
